@@ -14,7 +14,7 @@
 		911FE79A1E92BA4600BE9F3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911FE7981E92BA4600BE9F3E /* LaunchScreen.storyboard */; };
 		911FE7A51E92BA4600BE9F3E /* PinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE7A41E92BA4600BE9F3E /* PinderTests.swift */; };
 		911FE7B01E92BA4600BE9F3E /* PinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE7AF1E92BA4600BE9F3E /* PinderUITests.swift */; };
-		911FE7BE1E92BB6700BE9F3E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 911FE7BD1E92BB6700BE9F3E /* Podfile */; };
+		91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */; };
 		FC85703B1510CD91FC130550 /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C94E88A858BD74FCB1F8D05 /* Pods_Pinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,7 @@
 		911FE7AB1E92BA4600BE9F3E /* PinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		911FE7AF1E92BA4600BE9F3E /* PinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinderUITests.swift; sourceTree = "<group>"; };
 		911FE7B11E92BA4600BE9F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		911FE7BD1E92BB6700BE9F3E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = ../ColorScheme.swift; sourceTree = "<group>"; };
 		BBC08FC8F670E45BE070B6FD /* Pods-Pinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinder/Pods-Pinder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +105,6 @@
 				911FE7A31E92BA4600BE9F3E /* PinderTests */,
 				911FE7AE1E92BA4600BE9F3E /* PinderUITests */,
 				911FE78D1E92BA4600BE9F3E /* Products */,
-				911FE7BD1E92BB6700BE9F3E /* Podfile */,
 				2020460EFE7BFE74CBCCDC1E /* Pods */,
 				33FE466268779F208980D7AD /* Frameworks */,
 			);
@@ -124,6 +123,7 @@
 		911FE78E1E92BA4600BE9F3E /* Pinder */ = {
 			isa = PBXGroup;
 			children = (
+				91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */,
 				911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */,
 				911FE7911E92BA4600BE9F3E /* ViewController.swift */,
 				911FE7931E92BA4600BE9F3E /* Main.storyboard */,
@@ -264,7 +264,6 @@
 			files = (
 				911FE79A1E92BA4600BE9F3E /* LaunchScreen.storyboard in Resources */,
 				911FE7971E92BA4600BE9F3E /* Assets.xcassets in Resources */,
-				911FE7BE1E92BB6700BE9F3E /* Podfile in Resources */,
 				911FE7951E92BA4600BE9F3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				911FE7921E92BA4600BE9F3E /* ViewController.swift in Sources */,
+				91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */,
 				911FE7901E92BA4600BE9F3E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +588,7 @@
 				911FE7B61E92BA4600BE9F3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		911FE7B71E92BA4600BE9F3E /* Build configuration list for PBXNativeTarget "PinderTests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +597,7 @@
 				911FE7B91E92BA4600BE9F3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		911FE7BA1E92BA4600BE9F3E /* Build configuration list for PBXNativeTarget "PinderUITests" */ = {
 			isa = XCConfigurationList;
@@ -604,6 +606,7 @@
 				911FE7BC1E92BA4600BE9F3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
