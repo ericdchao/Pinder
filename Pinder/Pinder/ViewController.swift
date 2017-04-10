@@ -7,10 +7,33 @@
 //
 
 import UIKit
+import Firebase
+
+var curUser = ""
+
+var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBAction func registerClicked(_ sender: Any) {
+        if let username = usernameField.text {
+            if let password = passwordField.text {
+                saveNewUser(username: username, password: password)
+                curUser = username
+                self.performSegue(withIdentifier: "registerSeg", sender: nil)
+            }
+            
+        }
+    }
+    
+    @IBAction func loginClicked(_ sender: Any) {
+    }
+
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683C47D71E98266C00F2849F /* DatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C47D61E98266C00F2849F /* DatabaseFunctions.swift */; };
 		911FE7901E92BA4600BE9F3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */; };
 		911FE7921E92BA4600BE9F3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE7911E92BA4600BE9F3E /* ViewController.swift */; };
 		911FE7951E92BA4600BE9F3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911FE7931E92BA4600BE9F3E /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 		911FE7A51E92BA4600BE9F3E /* PinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE7A41E92BA4600BE9F3E /* PinderTests.swift */; };
 		911FE7B01E92BA4600BE9F3E /* PinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE7AF1E92BA4600BE9F3E /* PinderUITests.swift */; };
 		91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */; };
+		91298DDB1E9BF60F00E84551 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */; };
+		91298DDD1E9BF93C00E84551 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91298DDC1E9BF93C00E84551 /* GoogleService-Info.plist */; };
 		FC85703B1510CD91FC130550 /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C94E88A858BD74FCB1F8D05 /* Pods_Pinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		4C94E88A858BD74FCB1F8D05 /* Pods_Pinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		683C47D61E98266C00F2849F /* DatabaseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseFunctions.swift; sourceTree = "<group>"; };
 		6C3BF72817A13DC323C3C8BB /* Pods-Pinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pinder/Pods-Pinder.debug.xcconfig"; sourceTree = "<group>"; };
 		911FE78C1E92BA4600BE9F3E /* Pinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 		911FE7AF1E92BA4600BE9F3E /* PinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinderUITests.swift; sourceTree = "<group>"; };
 		911FE7B11E92BA4600BE9F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = ../ColorScheme.swift; sourceTree = "<group>"; };
+		91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		91298DDC1E9BF93C00E84551 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBC08FC8F670E45BE070B6FD /* Pods-Pinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinder/Pods-Pinder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,9 +133,12 @@
 				911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */,
 				911FE7911E92BA4600BE9F3E /* ViewController.swift */,
 				911FE7931E92BA4600BE9F3E /* Main.storyboard */,
+				91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */,
 				911FE7961E92BA4600BE9F3E /* Assets.xcassets */,
+				91298DDC1E9BF93C00E84551 /* GoogleService-Info.plist */,
 				911FE7981E92BA4600BE9F3E /* LaunchScreen.storyboard */,
 				911FE79B1E92BA4600BE9F3E /* Info.plist */,
+				683C47D61E98266C00F2849F /* DatabaseFunctions.swift */,
 			);
 			path = Pinder;
 			sourceTree = "<group>";
@@ -263,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				911FE79A1E92BA4600BE9F3E /* LaunchScreen.storyboard in Resources */,
+				91298DDD1E9BF93C00E84551 /* GoogleService-Info.plist in Resources */,
 				911FE7971E92BA4600BE9F3E /* Assets.xcassets in Resources */,
 				911FE7951E92BA4600BE9F3E /* Main.storyboard in Resources */,
 			);
@@ -337,7 +347,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683C47D71E98266C00F2849F /* DatabaseFunctions.swift in Sources */,
 				911FE7921E92BA4600BE9F3E /* ViewController.swift in Sources */,
+				91298DDB1E9BF60F00E84551 /* ProfileViewController.swift in Sources */,
 				91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */,
 				911FE7901E92BA4600BE9F3E /* AppDelegate.swift in Sources */,
 			);
@@ -495,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Pinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GroupProject.Pinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Pinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GroupProject.Pinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
