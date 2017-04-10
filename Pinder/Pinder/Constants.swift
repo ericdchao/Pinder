@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+
+
+let isPet = 2
+let isUser = 1
+let userPassDoesNotExist = 0
