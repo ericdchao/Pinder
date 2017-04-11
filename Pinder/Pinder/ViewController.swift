@@ -29,6 +29,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: Any) {
+//        curUser = username
+        self.performSegue(withIdentifier: "registerSeg", sender: nil)
     }
 
     

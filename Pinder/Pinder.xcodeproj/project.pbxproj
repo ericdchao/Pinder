@@ -19,6 +19,9 @@
 		91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */; };
 		91298DDB1E9BF60F00E84551 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */; };
 		91298DDD1E9BF93C00E84551 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91298DDC1E9BF93C00E84551 /* GoogleService-Info.plist */; };
+		91298DDF1E9C7F6600E84551 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DDE1E9C7F6600E84551 /* BrowseViewController.swift */; };
+		91298DE11E9C80C400E84551 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DE01E9C80C400E84551 /* MatchesViewController.swift */; };
+		91298DE31E9C82FC00E84551 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DE21E9C82FC00E84551 /* DetailViewController.swift */; };
 		FC85703B1510CD91FC130550 /* Pods_Pinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C94E88A858BD74FCB1F8D05 /* Pods_Pinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = ../ColorScheme.swift; sourceTree = "<group>"; };
 		91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		91298DDC1E9BF93C00E84551 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		91298DDE1E9C7F6600E84551 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		91298DE01E9C80C400E84551 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
+		91298DE21E9C82FC00E84551 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BBC08FC8F670E45BE070B6FD /* Pods-Pinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinder/Pods-Pinder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +140,10 @@
 				91278F231E94A3CB00B3BDF4 /* ColorScheme.swift */,
 				911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */,
 				911FE7911E92BA4600BE9F3E /* ViewController.swift */,
+				91298DE21E9C82FC00E84551 /* DetailViewController.swift */,
 				911FE7931E92BA4600BE9F3E /* Main.storyboard */,
+				91298DDE1E9C7F6600E84551 /* BrowseViewController.swift */,
+				91298DE01E9C80C400E84551 /* MatchesViewController.swift */,
 				91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */,
 				911FE7961E92BA4600BE9F3E /* Assets.xcassets */,
 				91298DDC1E9BF93C00E84551 /* GoogleService-Info.plist */,
@@ -350,12 +359,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91298DE31E9C82FC00E84551 /* DetailViewController.swift in Sources */,
+				91298DDF1E9C7F6600E84551 /* BrowseViewController.swift in Sources */,
 				683C47D71E98266C00F2849F /* DatabaseFunctions.swift in Sources */,
 				911FE7921E92BA4600BE9F3E /* ViewController.swift in Sources */,
 				91298DDB1E9BF60F00E84551 /* ProfileViewController.swift in Sources */,
 				91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */,
 				911FE7901E92BA4600BE9F3E /* AppDelegate.swift in Sources */,
 				683C47DB1E9C3F1C00F2849F /* Constants.swift in Sources */,
+				91298DE11E9C80C400E84551 /* MatchesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

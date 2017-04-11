@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="-82.400000000000006" y="115.59220389805098"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="9EW-go-pF4">
             <objects>
-                <viewController id="EQv-3e-5Ut" sceneMemberID="viewController">
+                <viewController id="EQv-3e-5Ut" customClass="ProfileViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7eN-BY-gZQ"/>
                         <viewControllerLayoutGuide type="bottom" id="8wN-GQ-NNJ"/>
@@ -150,9 +150,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ik5-c0-36p">
-                                <rect key="frame" x="300" y="28" width="46" height="30"/>
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="EQv-3e-5Ut" eventType="touchUpInside" id="aK5-kh-4oh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="789.60000000000002" y="116.49175412293854"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="1Um-nk-joF">
             <objects>
-                <viewController id="tO0-uF-eQs" sceneMemberID="viewController">
+                <viewController id="tO0-uF-eQs" customClass="DetailViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZZO-iF-1az"/>
                         <viewControllerLayoutGuide type="bottom" id="Nvx-XL-kbR"/>
@@ -248,19 +251,34 @@
                                 <rect key="frame" x="313" y="28" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="settingPress:" destination="tO0-uF-eQs" eventType="touchUpInside" id="xLg-rq-ii8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJT-d6-r6N">
+                                <rect key="frame" x="16" y="30" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Return to Matches"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="tO0-uF-eQs" eventType="touchUpInside" id="4Wm-cR-tB4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="yjx-Vf-tGW" kind="show" identifier="detailToMatches" id="OcG-MC-7z7"/>
+                        <segue destination="EQv-3e-5Ut" kind="show" identifier="detailToSettings" id="CvM-nL-yoL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crf-iD-SEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2058" y="74"/>
+            <point key="canvasLocation" x="2517.5999999999999" y="3.1484257871064472"/>
         </scene>
-        <!--View Controller-->
+        <!--Browse View Controller-->
         <scene sceneID="ZtW-3q-lG9">
             <objects>
-                <viewController id="efH-f7-nHu" sceneMemberID="viewController">
+                <viewController id="efH-f7-nHu" customClass="BrowseViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lDA-rO-Z4v"/>
                         <viewControllerLayoutGuide type="bottom" id="PzU-SG-LUf"/>
@@ -321,27 +339,34 @@
                                 <rect key="frame" x="8" y="47" width="69" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Matches"/>
+                                <connections>
+                                    <action selector="matchPressed:" destination="efH-f7-nHu" eventType="touchUpInside" id="SXr-Wn-bC0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijs-qz-gva">
                                 <rect key="frame" x="306" y="47" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="settingPressed:" destination="efH-f7-nHu" eventType="touchUpInside" id="hqK-p3-6SK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <segue destination="yjx-Vf-tGW" kind="presentation" identifier="toMatches" id="cLi-gp-i4m"/>
+                        <segue destination="EQv-3e-5Ut" kind="presentation" identifier="toSettings" id="4nK-kF-MhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arO-lY-hTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1200.8" y="876.61169415292363"/>
         </scene>
-        <!--View Controller-->
+        <!--Matches View Controller-->
         <scene sceneID="icT-OO-Hgg">
             <objects>
-                <viewController id="yjx-Vf-tGW" sceneMemberID="viewController">
+                <viewController id="yjx-Vf-tGW" customClass="MatchesViewController" customModule="Pinder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pi6-GL-Z6x"/>
                         <viewControllerLayoutGuide type="bottom" id="5zi-Fu-YHs"/>
@@ -445,17 +470,38 @@
                                 <rect key="frame" x="299" y="28" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="yjx-Vf-tGW" eventType="touchUpInside" id="nV2-Fl-Y77"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kb-KH-jyC">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Browse"/>
+                                <connections>
+                                    <action selector="browsePressed:" destination="yjx-Vf-tGW" eventType="touchUpInside" id="J43-Hz-iFg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0v-CN-ess">
+                                <rect key="frame" x="197" y="175" width="162" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Match"/>
+                                <connections>
+                                    <action selector="matchSelected:" destination="yjx-Vf-tGW" eventType="touchUpInside" id="K29-vL-vTf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <segue destination="tO0-uF-eQs" kind="presentation" identifier="toDetail" id="jgo-I0-u3I"/>
+                        <segue destination="efH-f7-nHu" kind="show" identifier="toBrowseFromMatch" id="BEL-XH-dgX"/>
+                        <segue destination="EQv-3e-5Ut" kind="presentation" identifier="toSettingFromMatch" id="QjC-z2-DJH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWT-cH-pvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153" y="816"/>
+            <point key="canvasLocation" x="2152.8000000000002" y="815.44227886056979"/>
         </scene>
     </scenes>
     <resources>
@@ -465,4 +511,9 @@
         <image name="matches" width="375" height="667"/>
         <image name="profile" width="375" height="667"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CvM-nL-yoL"/>
+        <segue reference="OcG-MC-7z7"/>
+        <segue reference="BEL-XH-dgX"/>
+    </inferredMetricsTieBreakers>
 </document>

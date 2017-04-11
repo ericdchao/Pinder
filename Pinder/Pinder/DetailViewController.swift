@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  DetailViewController.swift
 //  Pinder
 //
 //  Created by Kate Harline on 4/10/17.
@@ -9,14 +9,18 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController {
+class DetailViewController: UIViewController {
     
     @IBAction func backPressed(_ sender: Any) {
-        performSegue(withIdentifier: "toBrowse", sender: nil)
+        performSegue(withIdentifier: "detailToMatches", sender: nil)
     }
     
+    @IBAction func settingPress(_ sender: Any) {
+        performSegue(withIdentifier: "detailToSettings", sender: nil)
+    }
+    
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -26,5 +30,5 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
