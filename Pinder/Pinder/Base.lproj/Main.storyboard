@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -355,6 +355,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="petImage" destination="DNk-et-ntN" id="NkX-ri-4Uu"/>
                         <segue destination="yjx-Vf-tGW" kind="presentation" identifier="toMatches" id="cLi-gp-i4m"/>
                         <segue destination="EQv-3e-5Ut" kind="presentation" identifier="toSettings" id="4nK-kF-MhM"/>
                     </connections>
@@ -405,7 +406,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cht-LF-NkV" id="772-fz-L0k">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="116.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rPu-cS-kPc">
@@ -427,7 +428,7 @@
                                         <rect key="frame" x="0.0" y="145" width="343" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hus-Ye-7em" id="9c8-nq-dRl">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="103.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zL-22-xbI">
@@ -441,7 +442,7 @@
                                         <rect key="frame" x="0.0" y="249" width="343" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q1u-gd-pbB" id="LEk-2S-2zI">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="107.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dj0-Gh-B38">
@@ -456,7 +457,7 @@
                                         <rect key="frame" x="0.0" y="357" width="343" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="10e-nT-hNi" id="R28-Eu-LPx">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="92.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -512,8 +513,8 @@
         <image name="profile" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CvM-nL-yoL"/>
-        <segue reference="OcG-MC-7z7"/>
+        <segue reference="cLi-gp-i4m"/>
         <segue reference="BEL-XH-dgX"/>
+        <segue reference="4nK-kF-MhM"/>
     </inferredMetricsTieBreakers>
 </document>
