@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +43,6 @@
                                 <rect key="frame" x="67" y="499" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Register "/>
                                 <connections>
                                     <action selector="registerClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V21-SB-Z47"/>
                                 </connections>
@@ -52,7 +51,6 @@
                                 <rect key="frame" x="182" y="496" width="125" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rwn-1R-a1o"/>
                                 </connections>
@@ -150,9 +148,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ik5-c0-36p">
-                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <rect key="frame" x="16" y="20" width="54" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backPressed:" destination="EQv-3e-5Ut" eventType="touchUpInside" id="aK5-kh-4oh"/>
                                 </connections>
@@ -247,20 +244,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-yC-oS5">
-                                <rect key="frame" x="313" y="28" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <action selector="settingPress:" destination="tO0-uF-eQs" eventType="touchUpInside" id="xLg-rq-ii8"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJT-d6-r6N">
-                                <rect key="frame" x="16" y="30" width="81" height="30"/>
+                                <rect key="frame" x="16" y="18" width="58" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Return to Matches"/>
                                 <connections>
                                     <action selector="backPressed:" destination="tO0-uF-eQs" eventType="touchUpInside" id="4Wm-cR-tB4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-yC-oS5">
+                                <rect key="frame" x="304" y="20" width="46" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="settingPress:" destination="tO0-uF-eQs" eventType="touchUpInside" id="xLg-rq-ii8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -323,7 +318,7 @@
                                 <rect key="frame" x="46" y="557" width="78" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <state key="normal" title="Left">
+                                <state key="normal">
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -331,22 +326,20 @@
                                 <rect key="frame" x="260" y="557" width="78" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <state key="normal" title="RIght">
+                                <state key="normal">
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-5o-Gal">
-                                <rect key="frame" x="8" y="47" width="69" height="30"/>
+                                <rect key="frame" x="8" y="0.0" width="69" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Matches"/>
                                 <connections>
                                     <action selector="matchPressed:" destination="efH-f7-nHu" eventType="touchUpInside" id="SXr-Wn-bC0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijs-qz-gva">
-                                <rect key="frame" x="306" y="47" width="46" height="30"/>
+                                <rect key="frame" x="306" y="0.0" width="46" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="settingPressed:" destination="efH-f7-nHu" eventType="touchUpInside" id="hqK-p3-6SK"/>
                                 </connections>
@@ -406,7 +399,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cht-LF-NkV" id="772-fz-L0k">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="116"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="116.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rPu-cS-kPc">
@@ -428,7 +421,7 @@
                                         <rect key="frame" x="0.0" y="145" width="343" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hus-Ye-7em" id="9c8-nq-dRl">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="103"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="103.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zL-22-xbI">
@@ -442,7 +435,7 @@
                                         <rect key="frame" x="0.0" y="249" width="343" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q1u-gd-pbB" id="LEk-2S-2zI">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="107"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dj0-Gh-B38">
@@ -457,7 +450,7 @@
                                         <rect key="frame" x="0.0" y="357" width="343" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="10e-nT-hNi" id="R28-Eu-LPx">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="92.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -468,25 +461,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmp-Wt-G30">
-                                <rect key="frame" x="299" y="28" width="46" height="30"/>
+                                <rect key="frame" x="299" y="14" width="60" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="settingsPressed:" destination="yjx-Vf-tGW" eventType="touchUpInside" id="nV2-Fl-Y77"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kb-KH-jyC">
-                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <rect key="frame" x="16" y="20" width="46" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Browse"/>
                                 <connections>
                                     <action selector="browsePressed:" destination="yjx-Vf-tGW" eventType="touchUpInside" id="J43-Hz-iFg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0v-CN-ess">
-                                <rect key="frame" x="197" y="175" width="162" height="30"/>
+                                <rect key="frame" x="181" y="109" width="178" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Match"/>
                                 <connections>
                                     <action selector="matchSelected:" destination="yjx-Vf-tGW" eventType="touchUpInside" id="K29-vL-vTf"/>
                                 </connections>
@@ -513,8 +503,8 @@
         <image name="profile" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cLi-gp-i4m"/>
         <segue reference="BEL-XH-dgX"/>
-        <segue reference="4nK-kF-MhM"/>
+        <segue reference="OcG-MC-7z7"/>
+        <segue reference="CvM-nL-yoL"/>
     </inferredMetricsTieBreakers>
 </document>
