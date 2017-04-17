@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CDAlertView-CDAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CDAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PopupKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,17 +62,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>05FFA953C0AA557BCB99FE87C55B5797</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>158573A5C4639C1CAEEA240E94D6C661</key>
+		<key>369C26E0019831DFC30E7122499AB269</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52C51946F0225D9BA9915A745EC99B39</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,17 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B53010DE1BBD7186A913AEB3D06C4A5A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>BC5000D645EEAF961C85907CDC796FE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BEF7E6E85DB5CDE5D7A18F4F2EB8494B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF80410D0D77EB6EAA57099AB5208C6B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4BDF1191BBE4F429F08A241D8B53E2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

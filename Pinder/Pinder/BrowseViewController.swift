@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CDAlertView
 
 class BrowseViewController: UIViewController {
 
@@ -34,6 +35,15 @@ class BrowseViewController: UIViewController {
         //pull from database, set image and name
     }
     
+    func updataImage(){
+        // first get the user images 
+        // self.imageView.image = UIImage(nextImage)
+    }
+    
+    let matchAlert = CDAlertView(title: "It's a Match !", message: "Well explained message!", type: .notification)
+    let doneAction = CDAlertViewAction(title: " Contact her💪")
+    let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,8 +56,11 @@ class BrowseViewController: UIViewController {
         
         nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
 
-        
     }
+    
+
+    
+    
     
     func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
         
@@ -63,7 +76,7 @@ class BrowseViewController: UIViewController {
         
         let scale = min(abs(100 / xFromCenter), 1)
         
-        var stretchAndRotation = rotation.scaledBy(x: scale, y: scale) // rotation.scaleBy(x: scale, y: scale) is now rotation.scaledBy(x: scale, y: scale)
+        var stretchAndRotation = rotation.scaledBy(x: scale, y: scale)
         
         label.transform = stretchAndRotation
         
@@ -73,16 +86,33 @@ class BrowseViewController: UIViewController {
             if label.center.x < 100 {
                 
                 print("Not chosen")
+                updataImage()
                 
             } else if label.center.x > self.view.bounds.width - 100 {
                 
+//                
+//                let label = UILabel(frame: CGRect(x: self.view.bounds.width / 2 - 100, y: self.view.bounds.height / 2 - 50, width: 200, height: 100))
+//                
+//                label.text = "Drag me!"
+//                
+//                label.textAlignment = NSTextAlignment.center
+                matchAlert.show()
+//                var contentView:UIView
+//                
+//                convenience init(contentView: UIView)
+//                
+//                view.addSubview(label)
+
+                
                 print("Chosen")
+                updataImage()
                 
             }
             
+            
             rotation = CGAffineTransform(rotationAngle: 0)
             
-            stretchAndRotation = rotation.scaledBy(x: 1, y: 1) // rotation.scaleBy(x: scale, y: scale) is now rotation.scaledBy(x: scale, y: scale)
+            stretchAndRotation = rotation.scaledBy(x: 1, y: 1)
             
             
             label.transform = stretchAndRotation
