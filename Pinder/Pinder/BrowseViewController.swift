@@ -20,6 +20,13 @@ class BrowseViewController: UIViewController {
     
     @IBOutlet weak var petImage: UIImageView!
     
+    func updataImage(){
+        // first get the user images 
+        // self.imageView.image = UIImage(nextImage)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -47,7 +54,7 @@ class BrowseViewController: UIViewController {
         
         let scale = min(abs(100 / xFromCenter), 1)
         
-        var stretchAndRotation = rotation.scaledBy(x: scale, y: scale) // rotation.scaleBy(x: scale, y: scale) is now rotation.scaledBy(x: scale, y: scale)
+        var stretchAndRotation = rotation.scaledBy(x: scale, y: scale)
         
         label.transform = stretchAndRotation
         
@@ -57,16 +64,28 @@ class BrowseViewController: UIViewController {
             if label.center.x < 100 {
                 
                 print("Not chosen")
+                updataImage()
                 
             } else if label.center.x > self.view.bounds.width - 100 {
                 
+                
+                let label = UILabel(frame: CGRect(x: self.view.bounds.width / 2 - 100, y: self.view.bounds.height / 2 - 50, width: 200, height: 100))
+                
+                label.text = "Drag me!"
+                
+                label.textAlignment = NSTextAlignment.center
+                
+                view.addSubview(label)
+                
                 print("Chosen")
+                updataImage()
                 
             }
             
+            
             rotation = CGAffineTransform(rotationAngle: 0)
             
-            stretchAndRotation = rotation.scaledBy(x: 1, y: 1) // rotation.scaleBy(x: scale, y: scale) is now rotation.scaledBy(x: scale, y: scale)
+            stretchAndRotation = rotation.scaledBy(x: 1, y: 1)
             
             
             label.transform = stretchAndRotation
