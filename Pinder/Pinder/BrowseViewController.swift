@@ -53,6 +53,8 @@ class BrowseViewController: UIViewController {
         petImage.isUserInteractionEnabled = true
         
         petImage.addGestureRecognizer(gesture)
+        matchAlert.add(action: nevermindAction)
+        matchAlert.add(action: doneAction)
         
         nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
 
