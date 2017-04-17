@@ -26,10 +26,10 @@ class DetailViewController: UIViewController {
     }
     
     func matchLoaded() {
-        interestsLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
-        locationLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
-        timesLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
-        contactLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
+        interestsLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
+        locationLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
+        timesLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
+        contactLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
     }
     

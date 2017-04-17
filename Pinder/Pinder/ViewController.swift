@@ -20,37 +20,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBAction func registerClicked(_ sender: Any) {
-        if let username = usernameField.text {
-            if let password = passwordField.text {
-                saveNewUser(username: username, password: password)
-                curUser = username
-                self.performSegue(withIdentifier: "registerSeg", sender: nil)
-            }
-            
-        }
+//        if let username = usernameField.text {
+//            if let password = passwordField.text {
+//                saveNewUser(username: username, password: password)
+//                curUser = username
+//
+//            }
+//            
+//        }
+        self.performSegue(withIdentifier: "registerSeg", sender: nil)
     }
     
     @IBAction func loginClicked(_ sender: Any) {
 //        curUser = username
-        self.performSegue(withIdentifier: "registerSeg", sender: nil)
+        self.performSegue(withIdentifier: "login", sender: nil)
     }
 
     
     override func viewDidLoad() {
         
         //might need to check font names
-//        for family: String in UIFont.familyNames()
-//        {
-//            print("\(family)")
-//            for names: String in UIFont.fontNamesForFamilyName(family)
-//            {
-//                print("== \(names)")
-//            }
-//        }
-        
-        //how to change label's font
-       // label.font = UIFont(name: "QuicksandDash-Regular", size: 35)
-        
+
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
@@ -61,6 +51,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
 
+class Register1VC: ViewController {
+    @IBAction func humanReg(_ sender: Any) {
+        performSegue(withIdentifier: "regToEdit", sender: "human")
+    }
+    @IBAction func petReg(_ sender: Any) {
+        performSegue(withIdentifier: "regToEdit", sender: "pet")
+    }
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 

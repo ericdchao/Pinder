@@ -23,6 +23,7 @@
 		91298DDF1E9C7F6600E84551 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DDE1E9C7F6600E84551 /* BrowseViewController.swift */; };
 		91298DE11E9C80C400E84551 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DE01E9C80C400E84551 /* MatchesViewController.swift */; };
 		91298DE31E9C82FC00E84551 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91298DE21E9C82FC00E84551 /* DetailViewController.swift */; };
+		91D404151EA514B60027A11A /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D404141EA514B60027A11A /* EditViewController.swift */; };
 		91E73B151EA45D04001B6A8F /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91E73B0F1EA45CEB001B6A8F /* Quicksand-Bold.otf */; };
 		91E73B161EA45D07001B6A8F /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91E73B0E1EA45CEB001B6A8F /* Quicksand_Dash.otf */; };
 		91E73B171EA45D09001B6A8F /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91E73B101EA45CEB001B6A8F /* Quicksand-BoldItalic.otf */; };
@@ -75,6 +76,7 @@
 		91298DDE1E9C7F6600E84551 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		91298DE01E9C80C400E84551 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		91298DE21E9C82FC00E84551 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		91D404141EA514B60027A11A /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		91E73B0E1EA45CEB001B6A8F /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
 		91E73B0F1EA45CEB001B6A8F /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
 		91E73B101EA45CEB001B6A8F /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-BoldItalic.otf"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				911FE7911E92BA4600BE9F3E /* ViewController.swift */,
 				91298DE21E9C82FC00E84551 /* DetailViewController.swift */,
 				911FE7931E92BA4600BE9F3E /* Main.storyboard */,
+				91D404141EA514B60027A11A /* EditViewController.swift */,
 				91298DDE1E9C7F6600E84551 /* BrowseViewController.swift */,
 				91298DE01E9C80C400E84551 /* MatchesViewController.swift */,
 				91298DDA1E9BF60F00E84551 /* ProfileViewController.swift */,
@@ -399,6 +402,7 @@
 				91278F241E94A3CB00B3BDF4 /* ColorScheme.swift in Sources */,
 				911FE7901E92BA4600BE9F3E /* AppDelegate.swift in Sources */,
 				683C47DB1E9C3F1C00F2849F /* Constants.swift in Sources */,
+				91D404151EA514B60027A11A /* EditViewController.swift in Sources */,
 				91298DE11E9C80C400E84551 /* MatchesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

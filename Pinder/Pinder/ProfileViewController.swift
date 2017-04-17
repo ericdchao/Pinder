@@ -11,10 +11,11 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var interestLabel: UITextField!
-    @IBOutlet weak var locationLabel: UITextField!
-    @IBOutlet weak var contactLabel: UITextField!
-    @IBOutlet weak var timesLabel: UITextField!
+    @IBOutlet weak var interestsLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var timesLabel: UILabel!
+    @IBOutlet weak var contactLabel: UILabel!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var saveLabel: UILabel!
     
@@ -23,14 +24,17 @@ class ProfileViewController: UIViewController {
     @IBAction func backPressed(_ sender: Any) {
         performSegue(withIdentifier: "toBrowse", sender: nil)
     }
+    @IBAction func editPressed(_ sender: Any) {
+        performSegue(withIdentifier: "settingsToEdit", sender: nil)
+    }
+   
     
     func loadData() {
-        interestLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
-        locationLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
-        timesLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
-        contactLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
+        interestsLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
+        locationLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
+        timesLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
+        contactLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
-        saveLabel.font = UIFont(name: "QuicksandDash-Regular", size: 16)
     }
     
     override func viewDidLoad() {
