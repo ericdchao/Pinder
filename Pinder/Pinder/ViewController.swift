@@ -6,6 +6,8 @@
 //  Copyright © 2017 Kate Harline. All rights reserved.
 //
 
+//font help from http://codewithchris.com/common-mistakes-with-adding-custom-fonts-to-your-ios-app/
+
 import UIKit
 import Firebase
 
@@ -35,6 +37,19 @@ class ViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        
+        //might need to check font names
+//        for family: String in UIFont.familyNames()
+//        {
+//            print("\(family)")
+//            for names: String in UIFont.fontNamesForFamilyName(family)
+//            {
+//                print("== \(names)")
+//            }
+//        }
+        
+        //how to change label's font
+       // label.font = UIFont(name: "QuicksandDash-Regular", size: 35)
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
