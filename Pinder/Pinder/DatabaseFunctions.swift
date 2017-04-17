@@ -155,4 +155,10 @@ func changeUserName(oldUsername: String, newUsername: String, userType: String){
     ref.child(userType).child("/(oldUsername)").setValue(newUsername.lowercased())
 }
 
+//Function to change password
+func changePassword(oldPassword: String, newPassword: String, userType: String){
+    ref.child(userType).child("/(oldPassword)").setValue(newPassword)
+}
+
+
 

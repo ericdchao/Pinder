@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController {
+    var userToDisplay : String = ""
     
     @IBOutlet weak var interestsLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -38,6 +39,17 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        var oppositeType = "pets"
+        if userType == "pets" {
+            oppositeType = "users"
+        }
+        var prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
+        interestsLabel.text = prof.interests
+        timesLabel.text = prof.times
+        nameLabel.text = prof.name
+        image.image = prof.profileImage
+        locationLabel.text = prof.location
+        contactLabel.text = prof.phone
         
         super.viewDidLoad()
         loadData()

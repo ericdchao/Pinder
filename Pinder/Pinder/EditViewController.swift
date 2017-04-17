@@ -39,6 +39,13 @@ class EditViewController: UIViewController {
         
         
         changeUserProfile(username: curUser, userType: userType, dictionary: dic)
+        if passwordField.text! != "" {
+           changePassword(oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
+        }
+        
+        if nameField.text != "" {
+            changeUserName(oldUsername: curUser, newUsername: nameField.text!, userType: userType)
+        }
         performSegue(withIdentifier: "editToMatch", sender: nil)
     }
     
