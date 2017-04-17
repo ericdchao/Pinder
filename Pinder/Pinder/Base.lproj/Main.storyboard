@@ -141,8 +141,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="image" destination="zBQ-mS-uqc" id="Q1H-bB-RSN"/>
-                        <outlet property="nameLabel" destination="r7A-2k-9Nr" id="l6D-fM-bR2"/>
+                        <outlet property="contactLabel" destination="lVO-7Z-TJY" id="MIO-hS-zE6"/>
+                        <outlet property="image" destination="zBQ-mS-uqc" id="DUR-xG-HdE"/>
+                        <outlet property="interestLabel" destination="A7Y-Zb-0hP" id="FrD-C0-aXl"/>
+                        <outlet property="locationLabel" destination="ZlK-b1-fYY" id="DwW-CV-erX"/>
+                        <outlet property="nameLabel" destination="r7A-2k-9Nr" id="UBv-Zt-8cO"/>
+                        <outlet property="saveLabel" destination="jPS-jm-gxi" id="noc-UB-i1o"/>
+                        <outlet property="timesLabel" destination="tX4-ws-DUR" id="WSW-3a-2Zb"/>
                         <segue destination="efH-f7-nHu" kind="show" identifier="toBrowse" id="VPE-wx-bUh"/>
                     </connections>
                 </viewController>
@@ -272,7 +277,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ph5-3X-paP">
-                                <rect key="frame" x="57" y="323" width="269" height="21"/>
+                                <rect key="frame" x="57" y="323" width="269" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -286,6 +291,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="contactLabel" destination="xAg-Kt-AfQ" id="Ezm-yY-LfL"/>
+                        <outlet property="image" destination="8Ym-B7-0ei" id="AxS-p5-qss"/>
+                        <outlet property="interestsLabel" destination="922-4n-CiS" id="ecY-xv-B1Y"/>
+                        <outlet property="locationLabel" destination="Q32-7H-vOM" id="wuw-Lz-iTg"/>
+                        <outlet property="nameLabel" destination="Ph5-3X-paP" id="h1b-sj-WyK"/>
+                        <outlet property="timesLabel" destination="MiS-od-l6E" id="MUR-lj-yqf"/>
                         <segue destination="yjx-Vf-tGW" kind="show" identifier="detailToMatches" id="OcG-MC-7z7"/>
                         <segue destination="EQv-3e-5Ut" kind="show" identifier="detailToSettings" id="CvM-nL-yoL"/>
                     </connections>
@@ -345,6 +356,9 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="yesButton:" destination="efH-f7-nHu" eventType="touchUpInside" id="hMB-EJ-AIF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsw-jQ-jXQ">
                                 <rect key="frame" x="260" y="557" width="78" height="62"/>
@@ -353,6 +367,9 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="noButton:" destination="efH-f7-nHu" eventType="touchUpInside" id="YqD-q1-FGq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-5o-Gal">
                                 <rect key="frame" x="8" y="0.0" width="69" height="77"/>
@@ -383,7 +400,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="petImage" destination="DNk-et-ntN" id="NkX-ri-4Uu"/>
+                        <outlet property="nameLabel" destination="jQI-gx-EOZ" id="UDX-6S-LzK"/>
+                        <outlet property="petImage" destination="yDB-Ye-kOl" id="F6e-gd-KCw"/>
                         <segue destination="yjx-Vf-tGW" kind="presentation" identifier="toMatches" id="cLi-gp-i4m"/>
                         <segue destination="EQv-3e-5Ut" kind="presentation" identifier="toSettings" id="4nK-kF-MhM"/>
                     </connections>
@@ -448,7 +466,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="106" id="Q59-Vn-zcW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="match cell" rowHeight="106" id="Q59-Vn-zcW">
                                         <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q59-Vn-zcW" id="MLh-wg-gK2">
@@ -487,6 +505,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="locationLabel" destination="YWI-RG-Uq5" id="baN-uq-E7D"/>
+                        <outlet property="matchImage" destination="nhz-IH-9ZP" id="eQT-sF-DPp"/>
+                        <outlet property="nameLabel" destination="TG2-ru-asV" id="Fxq-jB-unw"/>
+                        <outlet property="table" destination="SJd-te-gkc" id="ldn-KS-wYk"/>
                         <segue destination="tO0-uF-eQs" kind="presentation" identifier="toDetail" id="jgo-I0-u3I"/>
                         <segue destination="efH-f7-nHu" kind="show" identifier="toBrowseFromMatch" id="BEL-XH-dgX"/>
                         <segue destination="EQv-3e-5Ut" kind="presentation" identifier="toSettingFromMatch" id="QjC-z2-DJH"/>
@@ -507,7 +529,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEL-XH-dgX"/>
-        <segue reference="OcG-MC-7z7"/>
+        <segue reference="cLi-gp-i4m"/>
         <segue reference="QjC-z2-DJH"/>
     </inferredMetricsTieBreakers>
 </document>

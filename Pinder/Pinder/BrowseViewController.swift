@@ -11,6 +11,18 @@ import Firebase
 
 class BrowseViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var petImage: UIImageView!
+    
+    @IBAction func noButton(_ sender: Any) {
+        //animate and update db when not interested
+    }
+    @IBAction func yesButton(_ sender: Any) {
+        //animate and update db when interested
+    }
+    
+    
+    
     @IBAction func matchPressed(_ sender: Any) {
         performSegue(withIdentifier: "toMatches", sender: nil)
     }
@@ -18,7 +30,9 @@ class BrowseViewController: UIViewController {
         performSegue(withIdentifier: "toSettings", sender: nil)
     }
     
-    @IBOutlet weak var petImage: UIImageView!
+    func petLoaded() {
+        //pull from database, set image and name
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +43,8 @@ class BrowseViewController: UIViewController {
         petImage.isUserInteractionEnabled = true
         
         petImage.addGestureRecognizer(gesture)
+        
+        nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
 
         
     }
