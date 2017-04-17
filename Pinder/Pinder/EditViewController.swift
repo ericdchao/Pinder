@@ -24,6 +24,28 @@ class EditViewController: UIViewController {
         
     }
     @IBAction func saveButton(_ sender: Any) {
+        
+        
+        var dic : Dictionary<String, userProfileElement> = [:]
+        
+        dic["name"] = nameField.text!
+        dic["age"] = ageField.text!
+        dic["email"] = emailField.text!
+        dic["password"] = passwordField.text!
+        dic["interests"] = interestsField.text!
+        dic["location"] = locationField.text!
+        dic["times"] = timesField.text!
+        dic["phone"] = phoneField.text!
+        
+        
+        changeUserProfile(username: curUser, userType: userType, dictionary: dic)
+        if passwordField.text! != "" {
+           changePassword(oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
+        }
+        
+        if nameField.text != "" {
+            changeUserName(oldUsername: curUser, newUsername: nameField.text!, userType: userType)
+        }
         performSegue(withIdentifier: "editToMatch", sender: nil)
     }
     
@@ -32,7 +54,7 @@ class EditViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
+        var prof = retrieveUserProfile(username: curUser, userType: userType)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         

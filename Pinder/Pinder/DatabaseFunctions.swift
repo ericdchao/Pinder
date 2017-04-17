@@ -66,15 +66,17 @@ func login(username: String, password: String) -> Int {
 //Function to retrieve Profiles of both pets and People
 //Returns a Dictionary of each profile element
 //userType = users if people, pets if not
-func retrieveUserProfile(username: String, userType : String) -> Dictionary<String,userProfileElement>{
-    var dictionary = Dictionary<String,userProfileElement>()
-    ref.child(userType).child("/(username)").child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+func retrieveUserProfile(username: String, userType : String) -> Profile{
+    var dic = Dictionary<String,userProfileElement>()
+    ref.child(userType).child("/username)").child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
         // Get user value
-        dictionary = (snapshot.value as? Dictionary<String,userProfileElement>)!
+        if let dictionary = (snapshot.value as? Dictionary<String,userProfileElement>){
+            dic = dictionary
+        }
     }) { (error) in
         print(error.localizedDescription)
     }
-    return dictionary
+    return Profile(dictionary: dic)
 }
 
 //Function to obtain un-swiped on matches for both users and pets
@@ -152,5 +154,11 @@ func getMatches(username: String, userType: String) ->  [String] {
 func changeUserName(oldUsername: String, newUsername: String, userType: String){
     ref.child(userType).child("/(oldUsername)").setValue(newUsername.lowercased())
 }
+
+//Function to change password
+func changePassword(oldPassword: String, newPassword: String, userType: String){
+    ref.child(userType).child("/(oldPassword)").setValue(newPassword)
+}
+
 
 

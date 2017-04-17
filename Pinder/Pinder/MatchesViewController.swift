@@ -23,7 +23,8 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var table: UITableView!
     
-    var matches: [userProfileElement] = []
+    var matches: [String] = []
+    var matchesProfile : Dictionary<String,Profile> = [:]
     
 
     
@@ -65,6 +66,8 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //send the current match/info
         
+        //Set user and use retrieveUserProfile
+        
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
@@ -78,7 +81,17 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        //Call getMatches to return usernames, and call retrieveUSerPorilfes on them!
+
+        matches = getMatches(username: curUser, userType: userType)
+        for match in matches {
+            var oppositeType = "pets"
+            if userType == "pets" {
+                oppositeType = "users"
+            }
+            matchesProfile[match] = retrieveUserProfile(username: match, userType: oppositeType)
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
