@@ -12,6 +12,9 @@ import CDAlertView
 
 class BrowseViewController: UIViewController {
 
+    var usersArray : [String] = []
+    var swipesArray : Dictionary<String, Profile> = [:]
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var petImage: UIImageView!
     
@@ -37,7 +40,22 @@ class BrowseViewController: UIViewController {
     
     func updataImage(){
         // first get the user images 
-        // self.imageView.image = UIImage(nextImage)
+        
+        if usersArray.isEmpty {
+            //Print error message no more users
+        } else {
+            let topUser = usersArray[0]
+         
+            
+            
+            nameLabel.text = topUser 
+            petImage.image = swipesArray[topUser]?.profileImage
+            
+            
+        }
+        
+        
+        // self.petImage.image = UIImage(nextImage)
     }
     
     let matchAlert = CDAlertView(title: "It's a Match !", message: "Well explained message!", type: .notification)
@@ -57,6 +75,16 @@ class BrowseViewController: UIViewController {
         matchAlert.add(action: doneAction)
         
         nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
+        
+        usersArray = getSwipes(username: curUser, userType: userType)
+        for user in usersArray {
+            var oppositeType = "pets"
+            if userType == "pets" {
+                oppositeType = "users"
+            }
+            
+            swipesArray[user] = retrieveUserProfile(username: user, userType: oppositeType)
+        }
 
     }
     
@@ -84,31 +112,17 @@ class BrowseViewController: UIViewController {
         
         
         if gestureRecognizer.state == UIGestureRecognizerState.ended {
-            
+         
             if label.center.x < 100 {
                 
                 print("Not chosen")
                 updataImage()
-                
+                   usersArray.remove(at: 0)
             } else if label.center.x > self.view.bounds.width - 100 {
-                
-//                
-//                let label = UILabel(frame: CGRect(x: self.view.bounds.width / 2 - 100, y: self.view.bounds.height / 2 - 50, width: 200, height: 100))
-//                
-//                label.text = "Drag me!"
-//                
-//                label.textAlignment = NSTextAlignment.center
-                matchAlert.show()
-//                var contentView:UIView
-//                
-//                convenience init(contentView: UIView)
-//                
-//                view.addSubview(label)
-
                 
                 print("Chosen")
                 updataImage()
-                
+                   usersArray.remove(at: 0)
             }
             
             
@@ -118,7 +132,6 @@ class BrowseViewController: UIViewController {
             
             
             label.transform = stretchAndRotation
-            
             label.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
             
         }

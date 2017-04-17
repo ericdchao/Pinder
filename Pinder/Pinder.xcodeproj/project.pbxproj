@@ -10,6 +10,7 @@
 		683C47D71E98266C00F2849F /* DatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C47D61E98266C00F2849F /* DatabaseFunctions.swift */; };
 		683C47DB1E9C3F1C00F2849F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C47DA1E9C3F1C00F2849F /* Constants.swift */; };
 		683C47E31EA158C900F2849F /* userProfileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C47E21EA158C900F2849F /* userProfileElement.swift */; };
+		683C47E51EA53A1C00F2849F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C47E41EA53A1C00F2849F /* Profile.swift */; };
 		911FE7901E92BA4600BE9F3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */; };
 		911FE7921E92BA4600BE9F3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE7911E92BA4600BE9F3E /* ViewController.swift */; };
 		911FE7951E92BA4600BE9F3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911FE7931E92BA4600BE9F3E /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		683C47D61E98266C00F2849F /* DatabaseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseFunctions.swift; sourceTree = "<group>"; };
 		683C47DA1E9C3F1C00F2849F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		683C47E21EA158C900F2849F /* userProfileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userProfileElement.swift; sourceTree = "<group>"; };
+		683C47E41EA53A1C00F2849F /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		6C3BF72817A13DC323C3C8BB /* Pods-Pinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pinder/Pods-Pinder.debug.xcconfig"; sourceTree = "<group>"; };
 		911FE78C1E92BA4600BE9F3E /* Pinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		911FE78F1E92BA4600BE9F3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				911FE79B1E92BA4600BE9F3E /* Info.plist */,
 				683C47D61E98266C00F2849F /* DatabaseFunctions.swift */,
 				683C47E21EA158C900F2849F /* userProfileElement.swift */,
+				683C47E41EA53A1C00F2849F /* Profile.swift */,
 			);
 			path = Pinder;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91298DE31E9C82FC00E84551 /* DetailViewController.swift in Sources */,
+				683C47E51EA53A1C00F2849F /* Profile.swift in Sources */,
 				683C47E31EA158C900F2849F /* userProfileElement.swift in Sources */,
 				91298DDF1E9C7F6600E84551 /* BrowseViewController.swift in Sources */,
 				683C47D71E98266C00F2849F /* DatabaseFunctions.swift in Sources */,

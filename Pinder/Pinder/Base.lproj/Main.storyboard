@@ -752,9 +752,9 @@
         <image name="twtr-share.png" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cLi-gp-i4m"/>
-        <segue reference="VtK-ZC-g5G"/>
-        <segue reference="Nr8-4J-LyG"/>
-        <segue reference="4nK-kF-MhM"/>
+        <segue reference="OcG-MC-7z7"/>
+        <segue reference="CvM-nL-yoL"/>
+        <segue reference="eAx-77-1wo"/>
+        <segue reference="BEL-XH-dgX"/>
     </inferredMetricsTieBreakers>
 </document>

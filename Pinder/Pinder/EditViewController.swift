@@ -47,7 +47,7 @@ class EditViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
+        var prof = retrieveUserProfile(username: curUser, userType: userType)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
