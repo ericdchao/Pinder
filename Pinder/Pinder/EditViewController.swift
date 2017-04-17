@@ -24,6 +24,21 @@ class EditViewController: UIViewController {
         
     }
     @IBAction func saveButton(_ sender: Any) {
+        
+        
+        var dic : Dictionary<String, userProfileElement> = [:]
+        
+        dic["name"] = nameField.text!
+        dic["age"] = ageField.text!
+        dic["email"] = emailField.text!
+        dic["password"] = passwordField.text!
+        dic["interests"] = interestsField.text!
+        dic["location"] = locationField.text!
+        dic["times"] = timesField.text!
+        dic["phone"] = phoneField.text!
+        
+        
+        changeUserProfile(username: curUser, userType: userType, dictionary: dic)
         performSegue(withIdentifier: "editToMatch", sender: nil)
     }
     
