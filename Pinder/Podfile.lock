@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - CDAlertView (0.6.0)
   - Fabric (1.6.11)
   - FBSDKCoreKit (4.20.2):
     - Bolts (~> 1.7)
@@ -87,6 +88,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - PopupKit (3.1.1)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -96,13 +98,16 @@ PODS:
     - TwitterCore (>= 2.8)
 
 DEPENDENCIES:
+  - CDAlertView
   - Firebase
   - Firebase/Auth
   - Firebase/Database
   - FirebaseUI
+  - PopupKit
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  CDAlertView: e6f365fa0fac7349197e7ea4bd7810c069215cf4
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FBSDKCoreKit: 82eac696eb6157da5f4266c3a241f00e9bd72471
   FBSDKLoginKit: 2211bede07c83391349eacc1fd86cf6d9289ce38
@@ -118,10 +123,11 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  PopupKit: e362ed92148d831a9c38a2bc7a25893e46d64c54
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 
-PODFILE CHECKSUM: a10b5202d08b6cc41cd808016cc27203efc89f93
+PODFILE CHECKSUM: 5712bfbca8744ab6b6497fb4d57f516c10f7f662
 
 COCOAPODS: 1.2.0
