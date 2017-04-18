@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
         interestsLabel.text = prof.interests
         timesLabel.text = prof.times
         nameLabel.text = prof.name
-        image.image = prof.profileImage
+       // image.image = prof.profileImage
         locationLabel.text = prof.location
         contactLabel.text = prof.phone
         

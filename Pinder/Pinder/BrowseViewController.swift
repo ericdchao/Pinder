@@ -49,7 +49,7 @@ class BrowseViewController: UIViewController {
             
             
             nameLabel.text = topUser 
-            petImage.image = swipesArray[topUser]?.profileImage
+            //petImage.image = swipesArray[topUser]?.profileImage
             
             
         }
