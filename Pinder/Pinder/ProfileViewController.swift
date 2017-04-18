@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
         if userType == "pets" {
             oppositeType = "users"
         }
-        var prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
+        let prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
         interestsLabel.text = prof.interests
         timesLabel.text = prof.times
         nameLabel.text = prof.name

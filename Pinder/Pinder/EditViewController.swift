@@ -6,11 +6,13 @@
 //  Copyright © 2017 Kate Harline. All rights reserved.
 //
 
+//access camera roll using https://turbofuture.com/cell-phones/Access-Photo-Camera-and-Library-in-Swift
+
 import UIKit
 import Firebase
 
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var ageField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -20,12 +22,23 @@ class EditViewController: UIViewController {
     @IBOutlet weak var timesField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     
+    //picking pictures
     @IBAction func pictureButton(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
         
     }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        //save picked picture to database
+        self.dismiss(animated: true, completion: nil);
+    }
+    
     @IBAction func saveButton(_ sender: Any) {
-        
-        
         var dic : Dictionary<String, userProfileElement> = [:]
         
         dic["name"] = nameField.text!
@@ -37,7 +50,6 @@ class EditViewController: UIViewController {
         dic["times"] = timesField.text!
         dic["phone"] = phoneField.text!
         
-        
         changeUserProfile(username: curUser, userType: userType, dictionary: dic)
         if passwordField.text! != "" {
            changePassword(oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
@@ -46,7 +58,7 @@ class EditViewController: UIViewController {
         if nameField.text != "" {
             changeUserName(oldUsername: curUser, newUsername: nameField.text!, userType: userType)
         }
-        performSegue(withIdentifier: "editToMatch", sender: nil)
+        performSegue(withIdentifier: "editToSettings", sender: nil)
     }
     
     @IBAction func backButton(_ sender: Any) {
