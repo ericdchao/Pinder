@@ -7,6 +7,7 @@
 //
 
 //font help from http://codewithchris.com/common-mistakes-with-adding-custom-fonts-to-your-ios-app/
+//dismiss keyboard with tap http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
 
 import UIKit
 import Firebase
