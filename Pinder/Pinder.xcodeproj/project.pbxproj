@@ -274,6 +274,7 @@
 				TargetAttributes = {
 					911FE78B1E92BA4600BE9F3E = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = P3J4S4E24P;
 						ProvisioningStyle = Automatic;
 					};
 					911FE79F1E92BA4600BE9F3E = {
@@ -562,10 +563,11 @@
 			baseConfigurationReference = 6C3BF72817A13DC323C3C8BB /* Pods-Pinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P3J4S4E24P;
 				INFOPLIST_FILE = Pinder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GroupProject.Pinder;
+				PRODUCT_BUNDLE_IDENTIFIER = PinderProject.Pinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -576,10 +578,11 @@
 			baseConfigurationReference = BBC08FC8F670E45BE070B6FD /* Pods-Pinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P3J4S4E24P;
 				INFOPLIST_FILE = Pinder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GroupProject.Pinder;
+				PRODUCT_BUNDLE_IDENTIFIER = PinderProject.Pinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
