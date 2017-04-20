@@ -15,10 +15,13 @@ import Firebase
 var curUser = ""
 var curPass = ""
 var userType = ""
-var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
-
+//let ref = FIRDatabaseReference!.self
+let storage = FIRStorage.storage()
+let storageRef = storage.reference()
 class ViewController: UIViewController {
 
+   
+  
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBAction func registerClicked(_ sender: Any) {
@@ -29,18 +32,45 @@ class ViewController: UIViewController {
     
     @IBAction func loginClicked(_ sender: Any) {
        // curUser = username
-        
-        let userTypeTemp = login(username: usernameField.text!, password: passwordField.text!)
-        if userTypeTemp != 0 {
-            curUser = usernameField.text!
-            if userTypeTemp == isPet{
-                userType = "pets"
-            } else {
+        print("1 ========")
+        var userField = usernameField.text ?? "blank"
+        var passField = passwordField.text ?? "blank"
+        curPass = passField;
+        curUser = userField;
+        GlobalUser.init(curUser: userField, curPass: passField)
+        print("TEST")
+        print(curUser)
+        print(curPass)
+        loginUsersUser(with: userField, password: passField, completion: { success in
+            if success {
                 userType = "users"
+                loginUsersPass(with: userField, password: passField, completion: { success in
+                    if success {
+                      //print("You're a user Harry!")
+                      self.performSegue(withIdentifier: "login", sender: nil)
+                    }
+                })
+            } else {
+               // print ("no you aint no user")
             }
-             self.performSegue(withIdentifier: "login", sender: nil)
-        }
-       
+        })
+        
+        loginPetsUser(with: userField, password: passField, completion: { success in
+            if success {
+                //print("Yay is a pet username good")
+                userType = "pets"
+                loginPetsPass(with: userField, password: passField, completion: { success in
+                    if success {
+                        //print("You're a pet, Larry!")
+                        self.performSegue(withIdentifier: "login", sender: nil)
+                    }
+                })
+            } else {
+               // print ("no you aint no pet")
+            }
+        })
+        print("is neither user or pet")
+   
     }
 
     func dismissKeyboard() {
@@ -99,3 +129,8 @@ class Register1VC: ViewController {
     }
 }
 
+struct GlobalUser {
+    var curUser : String
+    var curPass : String
+    
+}

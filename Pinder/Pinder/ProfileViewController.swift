@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController {
-    var userToDisplay : String = ""
+    var userToDisplay : String = "blank"
+    var userTypeToDisplay: String = "pets"
     
     @IBOutlet weak var interestsLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -31,6 +32,8 @@ class ProfileViewController: UIViewController {
    
     
     func loadData() {
+        let storageRef = storage.reference()
+        
         interestsLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         locationLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         timesLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
@@ -43,14 +46,25 @@ class ProfileViewController: UIViewController {
         if userType == "pets" {
             oppositeType = "users"
         }
-        let prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
-        interestsLabel.text = prof.interests
-        timesLabel.text = prof.times
-        nameLabel.text = prof.name
-       // image.image = prof.profileImage
-        locationLabel.text = prof.location
-        contactLabel.text = prof.phone
+        //let prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
+        //REPLACE ABOVE LINE
+        var ref = FIRDatabase.database().reference()
+        ref.child(oppositeType).child(userToDisplay).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+            // Get user value
+          
+             let dictionary = snapshot.value as? NSDictionary
+                print("start")
+                self.interestsLabel.text = dictionary?["interests"] as? String ?? ""
+                self.timesLabel.text = dictionary?["times"] as? String ?? ""
+                self.nameLabel.text = dictionary?["name"] as? String ?? ""
+                // image.image = prof.profileImage
+                self.locationLabel.text = dictionary?["contact"] as? String ?? ""
+                self.contactLabel.text = dictionary?["contact"] as? String ?? ""
+            
+        })
+
         
+       
         super.viewDidLoad()
         loadData()
         

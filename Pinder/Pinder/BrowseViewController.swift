@@ -11,7 +11,7 @@ import Firebase
 import CDAlertView
 
 class BrowseViewController: UIViewController {
-
+    var ref = FIRDatabase.database().reference()
     var usersArray : [String] = []
     var swipesArray : Dictionary<String, Profile> = [:]
     
@@ -49,7 +49,7 @@ class BrowseViewController: UIViewController {
             
             
             nameLabel.text = topUser 
-            //petImage.image = swipesArray[topUser]?.profileImage
+//            petImage.image = swipesArray[topUser]?.profileImage
             
             
         }
@@ -58,14 +58,20 @@ class BrowseViewController: UIViewController {
         // self.petImage.image = UIImage(nextImage)
     }
     
-    let matchAlert = CDAlertView(title: "It's a Match !", message: "Well explained message!", type: .notification)
+    func someHandler(alert: CDAlertViewAction!) {
+        // Do something...
+        print("Handle!")
+    }
+    
+    let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .notification)
     let doneAction = CDAlertViewAction(title: " Contact her💪")
+    let action = CDAlertViewAction(title: "Action Title", font: UIFont.init(), textColor: UIColor.black, backgroundColor: UIColor.cyan, handler: {(alert: CDAlertViewAction!) in print("Foo")})
     let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        print("Dylan's choice ==========")
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
         
         petImage.isUserInteractionEnabled = true
@@ -76,14 +82,48 @@ class BrowseViewController: UIViewController {
         
         nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
         
+        var oppositeType = "pets"
+        if userType == "pets" {
+            oppositeType = "users"
+        }
+        
         usersArray = getSwipes(username: curUser, userType: userType)
-        for user in usersArray {
-            var oppositeType = "pets"
-            if userType == "pets" {
-                oppositeType = "users"
+        
+        ref.child(oppositeType).observeSingleEvent(of: .value, with: {
+            (snapshot) in
+            let enumerator = snapshot.children
+              print("appending")
+            while let user = enumerator.nextObject() as? FIRDataSnapshot{
+              
+                print(user.key)
+                self.usersArray.append(user.key)
             }
+        })
+        
+        ref.child("matches").child(userType).child(curUser).observeSingleEvent(of: .value, with: { (snapshot) in
+            let enumerator = snapshot.children
+            print("removing")
+            while let user = enumerator.nextObject() as? FIRDataSnapshot{
+                print(user.key)
+                self.usersArray.remove(at: self.usersArray.index(of: user.key )!) //very inefficient way to remove already matched things
+            }
+        })
+
+  
+        
+        
+        
+        for user in usersArray {
+        
+            ref.child(oppositeType).child(user).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+                // Get user value
+                let dictionary = snapshot.value as? NSDictionary
+                let newProfile = Profile(dictionary: dictionary as! Dictionary<String, userProfileElement>)
+                self.swipesArray[user] = newProfile
+            })
+
             
-            swipesArray[user] = retrieveUserProfile(username: user, userType: oppositeType)
+            
         }
 
     }
@@ -117,12 +157,51 @@ class BrowseViewController: UIViewController {
                 
                 print("Not chosen")
                 updataImage()
-                   usersArray.remove(at: 0)
+                if usersArray.count > 0 { // What is this check?
+                    usersArray.remove(at: 0)
+                }
             } else if label.center.x > self.view.bounds.width - 100 {
-                
+                matchAlert.show()
                 print("Chosen")
                 updataImage()
-                   usersArray.remove(at: 0)
+                
+                               // if tryMatch(username: curUser, userType: userType, matchedUsername: usersArray[0]){
+                //    matchAlert.show()
+                //}
+                
+                
+                
+                var oppositeType = "pets"
+                if userType == "pets" {
+                    oppositeType = "users"
+                }
+                
+                //Check if other user matched
+                ref.child("matches").child(oppositeType).child(usersArray[0]).observeSingleEvent(of: .value, with: {(snapshot) in
+                    let enumerator = snapshot.children
+                    while let matches = enumerator.nextObject() as? FIRDataSnapshot{
+                        if matches.key == curUser { //It's a match!
+                            self.ref.child("matches").child(oppositeType).child(self.usersArray[0]).child(curUser).setValue(2)
+                            self.matchAlert.show()
+                            self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(2) //set own value
+                        } else {
+                            self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(1)
+
+                        }
+                    }
+                    
+                })
+                
+                //Set own match value
+       
+             
+                
+
+                usersArray.remove(at: 0)
+                
+                
+                
+                
             }
             
             

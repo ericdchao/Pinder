@@ -16,6 +16,7 @@ import Firebase
 
 //Function to register a new user, just needs username and password
 func saveNewUser(username: String, password: String) {
+    let ref = FIRDatabase.database().reference()
     let newUserRef = ref.child("users")
     newUserRef.child(username.lowercased())
     let newChildUserRef = newUserRef.child(username.lowercased())
@@ -26,6 +27,8 @@ func saveNewUser(username: String, password: String) {
 
 //Function to register a new pet; just adds a username and a password
 func saveNewPet(username: String, password: String){
+  let ref = FIRDatabase.database().reference()
+
     ref.child("pets").child(username).setValue(["username" : username,
                                                 "password": password])
 }
@@ -33,49 +36,97 @@ func saveNewPet(username: String, password: String){
 //Function to change a user or pet's profile with new values
 //Does not return anything, but userType is either users or pets
 func changeUserProfile(username : String, userType : String, dictionary: Dictionary<String, userProfileElement>){
+    let ref = FIRDatabase.database().reference()
+    print(Array(dictionary.keys))
     let userRef = ref.child(userType).child(username).child("profile")
     userRef.updateChildValues(dictionary)
 }
 
-//Function to attempt logging in with a username and password
-//Returns isPet or isUser if successful, userPassDoesNotExist otherwise (These are constant enums)
-func login(username: String, password: String) -> Int {
-    let newRef = ref.child("users");
-    var ans = userPassDoesNotExist;
-    newRef.observeSingleEvent(of: .value, with: { snapshot in
-        // do some stuff once
+//Function to attempt logging in to users with a username
+//Returns true or false with completion block
+func loginUsersUser(with username: String, password: String, completion: @escaping (Bool) -> Void) {
+    var ref = FIRDatabase.database().reference()
+ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
+        print("here")
         if(!snapshot.exists()){
-            ans =  -1; //Error!!! Somebody messed up our database schema for users
-        } else if(snapshot.hasChild("/(username)")){
-            if(newRef.child("/username").value(forKey: "password") as! String == password){
-                ans = isUser;
+           print("Error in Database Fields") //Error!!! Somebody messed up our database schema for users
+        } else if(snapshot.hasChild(username)){
+            print("has username in users!")
+                completion(true);
+            } else {
+                completion(false)
             }
+    })
+}
+
+func loginUsersPass(with username: String, password: String, completion: @escaping (Bool) -> Void){
+    let ref = FIRDatabase.database().reference()
+    print("debug")
+    ref.child("users").child(username).observeSingleEvent(of: .value, with: { snapshot in
+        let value = snapshot.value as? NSDictionary
+        if(value?["password"] as?  String ?? "" == password){
+            print("yup")
+            completion(true)
+        } else{
+            print("bad job")
+            completion(false)
         }
         
-    });
-    ref.child("pets").observeSingleEvent(of: .value, with: {snapshot in
-        if(snapshot.hasChild("/(username)")){
-            if(ref.child("pets").child("/(username)").value(forKey: "password") as! String == password){
-                ans = isPet;
+        
+    })
+    
+}
+
+func loginPetsUser(with username: String, password: String, completion: @escaping (Bool) -> Void) {
+    let ref = FIRDatabase.database().reference()
+    ref.child("pets").observeSingleEvent(of: .value, with: { snapshot in
+        print("here in pets")
+        if(snapshot.hasChild(username)){
+            print("Has Username")
+                completion(true)
+            } else {
+                print("5")
+                completion(false)
             }
+    })
+}
+
+
+func loginPetsPass(with username: String, password: String, completion: @escaping (Bool) -> Void){
+    let ref = FIRDatabase.database().reference()
+    ref.child("pets").child(username).observeSingleEvent(of: .value, with: { snapshot in
+        let value = snapshot.value as? NSDictionary
+        if(value?["password"] as?  String ?? "" == password){
+            print("good job!")
+            completion(true)
+        } else{
+            print("nope")
+            completion(false)
         }
-});
-    return ans;
+    })
 }
 
 //Function to retrieve Profiles of both pets and People
 //Returns a Dictionary of each profile element
 //userType = users if people, pets if not
 func retrieveUserProfile(username: String, userType : String) -> Profile{
+    let ref = FIRDatabase.database().reference()
     var dic = Dictionary<String,userProfileElement>()
-    ref.child(userType).child("/username)").child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+    print(username)
+    print(userType)
+    print("here i am!!")
+    ref.child(userType).child(username).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
         // Get user value
+        print("line")
         if let dictionary = (snapshot.value as? Dictionary<String,userProfileElement>){
+            print("start")
             dic = dictionary
         }
     }) { (error) in
+        print("this is an error")
         print(error.localizedDescription)
     }
+    print("llol done")
     return Profile(dictionary: dic)
 }
 
@@ -83,6 +134,7 @@ func retrieveUserProfile(username: String, userType : String) -> Profile{
 //Returns an array of usernames (of the opposite type), that can be passed into 'retriveUserProfile'
 //Usertype is either users or pets
 func getSwipes(username: String, userType:String) -> [String] {
+    let ref = FIRDatabase.database().reference()
     var unSwiped : [String] = []
     var oppositeType = "pets"
     if userType == "pets" {
@@ -97,7 +149,7 @@ func getSwipes(username: String, userType:String) -> [String] {
         }
     })
     
-    ref.child("matches").child(userType).child("/(username)").observeSingleEvent(of: .value, with: { (snapshot) in
+    ref.child("matches").child(userType).child(username).observeSingleEvent(of: .value, with: { (snapshot) in
         let enumerator = snapshot.children
         while let user = enumerator.nextObject() as? FIRDataSnapshot{
             unSwiped.remove(at: unSwiped.index(of: user.key )!) //very inefficient way to remove already matched things
@@ -109,6 +161,7 @@ func getSwipes(username: String, userType:String) -> [String] {
 //Function you call after swiping right on somebody to see if they matched you or not
 // returns true if they already matched you, otherwise false
 func tryMatch(username: String, userType: String, matchedUsername: String) -> Bool {
+    var ref = FIRDatabase.database().reference()
     var ans = false
     var defValue = 1
     var oppositeType = "pets"
@@ -137,6 +190,7 @@ func tryMatch(username: String, userType: String, matchedUsername: String) -> Bo
 //function to obtain matches that already have been matched from both ends!
 //returns an array of usernames (of the opposite type)
 func getMatches(username: String, userType: String) ->  [String] {
+    let ref = FIRDatabase.database().reference()
     var ans : [String] = []
     ref.child("matches").child(userType).child(username).observeSingleEvent(of: .value, with:
     {(snapshot) in
@@ -152,12 +206,14 @@ func getMatches(username: String, userType: String) ->  [String] {
 
 //Function to change the username of a user or a pet
 func changeUserName(oldUsername: String, newUsername: String, userType: String){
-    ref.child(userType).child("/(oldUsername)").setValue(newUsername.lowercased())
+    let ref = FIRDatabase.database().reference()
+    ref.child(userType).child(oldUsername).setValue(newUsername.lowercased())
 }
 
 //Function to change password
-func changePassword(oldPassword: String, newPassword: String, userType: String){
-    ref.child(userType).child("/(oldPassword)").setValue(newPassword)
+func changePassword(username: String, oldPassword: String, newPassword: String, userType: String){
+    let ref = FIRDatabase.database().reference()
+    ref.child(userType).child(username).child(oldPassword).setValue(newPassword)
 }
 
 

@@ -35,6 +35,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         //save picked picture to database
+        //save image storageRef.upload(image)
+        
         self.dismiss(animated: true, completion: nil);
     }
     
@@ -51,13 +53,15 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dic["phone"] = phoneField.text!
         
         changeUserProfile(username: curUser, userType: userType, dictionary: dic)
+        print("passed")
         if passwordField.text! != "" {
-           changePassword(oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
+            changePassword(username: curUser,oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
         }
-        
-        if nameField.text != "" {
-            changeUserName(oldUsername: curUser, newUsername: nameField.text!, userType: userType)
-        }
+        print("pass changed successfully")
+       // if nameField.text != "" { dont do this, it doesn't work
+        //    changeUserName(oldUsername: curUser, newUsername: nameField.text!, userType: userType)
+        //}
+        print("name changed")
         performSegue(withIdentifier: "editToSettings", sender: nil)
     }
     
@@ -66,7 +70,26 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewDidLoad() {
-        var prof = retrieveUserProfile(username: curUser, userType: userType)
+        //var prof = retrieveUserProfile(username: curUser, userType: userType)
+        let ref = FIRDatabase.database().reference()
+        ref.child(userType).child(curUser).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            let dictionary = snapshot.value as? NSDictionary
+                print("start")
+                self.nameField.text = dictionary?["name"] as? String 
+                self.passwordField.text =  dictionary?["password"] as? String ?? ""
+                self.interestsField.text =  dictionary?["interests"] as? String ?? ""
+                self.ageField.text =  dictionary?["age"] as? String ?? ""
+                self.timesField.text =  dictionary?["times"] as? String ?? ""
+                self.phoneField.text =  dictionary?["phone"] as? String ?? ""
+                self.locationField.text =  dictionary?["location"] as? String ?? ""
+            
+        })
+        
+
+        
+       print("done")
+        //imageField.image = prof.image
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
