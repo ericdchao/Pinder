@@ -13,7 +13,7 @@ import UIKit
 class Profile {
     
     var name : String?
-    //var profileImage: UIImage?
+    var profileImage: UIImage?
     var password : String?
     var interests: String?
     var location : String?

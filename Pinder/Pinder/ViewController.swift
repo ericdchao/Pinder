@@ -15,7 +15,8 @@ var curUser = ""
 var curPass = ""
 var userType = ""
 var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
-
+let storage = FIRStorage.storage()
+let storageRef = storage.reference()
 class ViewController: UIViewController {
 
     @IBOutlet weak var passwordField: UITextField!
@@ -28,18 +29,25 @@ class ViewController: UIViewController {
     
     @IBAction func loginClicked(_ sender: Any) {
        // curUser = username
-        
-        let userTypeTemp = login(username: usernameField.text!, password: passwordField.text!)
-        if userTypeTemp != 0 {
-            curUser = usernameField.text!
+        print("1 ========")
+        var userField = usernameField.text ?? "blank"
+        var passField = passwordField.text ?? "blank"
+        let userTypeTemp = login(username: userField, password: passField)
+        print("2 ========")
+        print(userTypeTemp)
+        if userTypeTemp != userPassDoesNotExist {
+            print("2.5 ========")
+            curUser = usernameField.text ?? " "
             if userTypeTemp == isPet{
                 userType = "pets"
             } else {
                 userType = "users"
             }
-             self.performSegue(withIdentifier: "login", sender: nil)
+            print("3 ========")
+            //self.performSegue(withIdentifier: "login", sender: nil)
+            print("4 ========")
         }
-       
+       print("User Login Failed")
     }
 
     

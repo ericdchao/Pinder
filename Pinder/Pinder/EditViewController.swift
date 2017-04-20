@@ -35,6 +35,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         //save picked picture to database
+        //save image storageRef.upload(image)
+        
         self.dismiss(animated: true, completion: nil);
     }
     
@@ -52,7 +54,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         changeUserProfile(username: curUser, userType: userType, dictionary: dic)
         if passwordField.text! != "" {
-           changePassword(oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
+            changePassword(username: curUser,oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
         }
         
         if nameField.text != "" {

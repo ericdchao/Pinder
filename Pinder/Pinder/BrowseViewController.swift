@@ -49,7 +49,7 @@ class BrowseViewController: UIViewController {
             
             
             nameLabel.text = topUser 
-            //petImage.image = swipesArray[topUser]?.profileImage
+//            petImage.image = swipesArray[topUser]?.profileImage
             
             
         }
@@ -58,14 +58,20 @@ class BrowseViewController: UIViewController {
         // self.petImage.image = UIImage(nextImage)
     }
     
-    let matchAlert = CDAlertView(title: "It's a Match !", message: "Well explained message!", type: .notification)
+    func someHandler(alert: CDAlertViewAction!) {
+        // Do something...
+        print("Handle!")
+    }
+    
+    let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .notification)
     let doneAction = CDAlertViewAction(title: " Contact her💪")
+    let action = CDAlertViewAction(title: "Action Title", font: UIFont.init(), textColor: UIColor.black, backgroundColor: UIColor.cyan, handler: {(alert: CDAlertViewAction!) in print("Foo")})
     let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        print("Dylan's choice ==========")
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
         
         petImage.isUserInteractionEnabled = true
@@ -117,12 +123,17 @@ class BrowseViewController: UIViewController {
                 
                 print("Not chosen")
                 updataImage()
-                   usersArray.remove(at: 0)
+                if usersArray.count > 0 {
+                    usersArray.remove(at: 0)
+                }
             } else if label.center.x > self.view.bounds.width - 100 {
-                
+                matchAlert.show()
                 print("Chosen")
                 updataImage()
-                   usersArray.remove(at: 0)
+//                if tryMatch(username: curUser, userType: userType, matchedUsername: usersArray[0]){
+//                    matchAlert.show()
+//                }
+//                usersArray.remove(at: 0)
             }
             
             

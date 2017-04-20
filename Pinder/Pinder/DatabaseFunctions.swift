@@ -39,27 +39,46 @@ func changeUserProfile(username : String, userType : String, dictionary: Diction
 
 //Function to attempt logging in with a username and password
 //Returns isPet or isUser if successful, userPassDoesNotExist otherwise (These are constant enums)
-func login(username: String, password: String) -> Int {
-    let newRef = ref.child("users");
+func login( username: String, password: String) -> Int {
+    print("Start ====")
+    print(username)
+    print(password)
     var ans = userPassDoesNotExist;
-    newRef.observeSingleEvent(of: .value, with: { snapshot in
+    objc_sync_enter(ans)
+  
+
+    ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
         // do some stuff once
+        print("here")
         if(!snapshot.exists()){
+            print("fail existence")
             ans =  -1; //Error!!! Somebody messed up our database schema for users
-        } else if(snapshot.hasChild("/(username)")){
-            if(newRef.child("/username").value(forKey: "password") as! String == password){
+        } else if(snapshot.hasChild(username)){
+            print("Success here =====")
+            if(ref.child(username).child("password").value(forKey: "password") as! String == password){
                 ans = isUser;
+                var b = isUser;
             }
         }
         
-    });
+    })
+    
+    
     ref.child("pets").observeSingleEvent(of: .value, with: {snapshot in
-        if(snapshot.hasChild("/(username)")){
-            if(ref.child("pets").child("/(username)").value(forKey: "password") as! String == password){
+        print(snapshot.value ?? "Hey there")
+        if(snapshot.hasChild(username)){
+            print("Has Username")
+            if(ref.child("pets").child(username).child("password").value(forKey: "password") as! String == password){
                 ans = isPet;
             }
         }
-});
+})
+    print(ans)
+    sleep(4)
+    print("finish")
+    print(b)
+    objc_sync_exit(ans)
+  
     return ans;
 }
 
@@ -68,7 +87,7 @@ func login(username: String, password: String) -> Int {
 //userType = users if people, pets if not
 func retrieveUserProfile(username: String, userType : String) -> Profile{
     var dic = Dictionary<String,userProfileElement>()
-    ref.child(userType).child("/username)").child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+    ref.child(userType).child(username).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
         // Get user value
         if let dictionary = (snapshot.value as? Dictionary<String,userProfileElement>){
             dic = dictionary
@@ -97,7 +116,7 @@ func getSwipes(username: String, userType:String) -> [String] {
         }
     })
     
-    ref.child("matches").child(userType).child("/(username)").observeSingleEvent(of: .value, with: { (snapshot) in
+    ref.child("matches").child(userType).child(username).observeSingleEvent(of: .value, with: { (snapshot) in
         let enumerator = snapshot.children
         while let user = enumerator.nextObject() as? FIRDataSnapshot{
             unSwiped.remove(at: unSwiped.index(of: user.key )!) //very inefficient way to remove already matched things
@@ -152,12 +171,12 @@ func getMatches(username: String, userType: String) ->  [String] {
 
 //Function to change the username of a user or a pet
 func changeUserName(oldUsername: String, newUsername: String, userType: String){
-    ref.child(userType).child("/(oldUsername)").setValue(newUsername.lowercased())
+    ref.child(userType).child(oldUsername).setValue(newUsername.lowercased())
 }
 
 //Function to change password
-func changePassword(oldPassword: String, newPassword: String, userType: String){
-    ref.child(userType).child("/(oldPassword)").setValue(newPassword)
+func changePassword(username: String, oldPassword: String, newPassword: String, userType: String){
+    ref.child(userType).child(username).child(oldPassword).setValue(newPassword)
 }
 
 

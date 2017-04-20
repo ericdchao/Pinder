@@ -31,6 +31,8 @@ class ProfileViewController: UIViewController {
    
     
     func loadData() {
+        let storageRef = storage.reference()
+        
         interestsLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         locationLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         timesLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
