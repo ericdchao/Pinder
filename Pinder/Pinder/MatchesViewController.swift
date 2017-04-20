@@ -83,14 +83,36 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view, typically from a nib.
         //Call getMatches to return usernames, and call retrieveUSerPorilfes on them!
 
-        matches = getMatches(username: curUser, userType: userType)
+        //matches = getMatches(username: curUser, userType: userType)
+        
+        let ref = FIRDatabase.database().reference()
+        ref.child("matches").child(userType).child(curUser).observeSingleEvent(of: .value, with:
+            {(snapshot) in
+                let enumerator = snapshot.children
+                while let matche = enumerator.nextObject() as? FIRDataSnapshot{
+                    if matche.value as! Int == 2 {
+                        self.matches.append(matche.key as! String)
+                    }
+                }
+        })
+     
+        
+        
         for match in matches {
             var oppositeType = "pets"
             if userType == "pets" {
                 oppositeType = "users"
             }
-            matchesProfile[match] = retrieveUserProfile(username: match, userType: oppositeType)
             
+            ref.child(oppositeType).child(match).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+                // Get user value
+                let dictionary = snapshot.value as? NSDictionary
+                let newProfile = Profile(dictionary: dictionary as! Dictionary<String, userProfileElement>)
+                  self.matchesProfile[match] = newProfile
+            })
+
+            
+          
         }
     }
     

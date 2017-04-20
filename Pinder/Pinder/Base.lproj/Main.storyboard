@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -60,7 +60,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="passwordField" destination="5p4-Wu-06Y" id="OMk-Je-8yr"/>
+                        <outlet property="passwordField" destination="5p4-Wu-06Y" id="ktt-Kp-1tY"/>
                         <outlet property="usernameField" destination="sTl-18-RgE" id="9Om-Ho-5A2"/>
                         <segue destination="efH-f7-nHu" kind="show" identifier="login" id="w4E-CX-gLH"/>
                     </connections>
@@ -701,9 +701,9 @@
         <image name="twtr-share.png" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eAx-77-1wo"/>
-        <segue reference="4nK-kF-MhM"/>
-        <segue reference="w4E-CX-gLH"/>
         <segue reference="cLi-gp-i4m"/>
+        <segue reference="VPE-wx-bUh"/>
+        <segue reference="4nK-kF-MhM"/>
+        <segue reference="eAx-77-1wo"/>
     </inferredMetricsTieBreakers>
 </document>
