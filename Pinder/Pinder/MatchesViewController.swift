@@ -33,7 +33,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func settingsPressed(_ sender: Any) {
-        performSegue(withIdentifier: "toSettingFromMatch", sender: nil)
+        performSegue(withIdentifier: "toSettingsFromMatch", sender: nil)
     }
 
     
