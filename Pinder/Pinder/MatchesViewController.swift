@@ -89,11 +89,16 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref.child("matches").child(userType).child(curUser).observeSingleEvent(of: .value, with:
             {(snapshot) in
                 let enumerator = snapshot.children
+                print("enter ==========")
                 while let matche = enumerator.nextObject() as? FIRDataSnapshot{
                     if matche.value as! Int == 2 {
-                        self.matches.append(matche.key as! String)
+                        print("added")
+                        self.matches.append(matche.key)
+                        print(self.matches)
                     }
                 }
+                
+                // Update table here
         })
      
         
@@ -114,6 +119,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
             
           
         }
+        print(matchesProfile)
     }
     
     override func didReceiveMemoryWarning() {
