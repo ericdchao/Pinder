@@ -38,15 +38,12 @@ class ViewController: UIViewController {
         curPass = passField;
         curUser = userField;
         GlobalUser.init(curUser: userField, curPass: passField)
-        print("TEST")
-        print(curUser)
-        print(curPass)
+
         loginUsersUser(with: userField, password: passField, completion: { success in
             if success {
                 userType = "users"
                 loginUsersPass(with: userField, password: passField, completion: { success in
                     if success {
-                      //print("You're a user Harry!")
                       self.performSegue(withIdentifier: "login", sender: nil)
                     }
                 })
@@ -69,7 +66,7 @@ class ViewController: UIViewController {
                // print ("no you aint no pet")
             }
         })
-        print("is neither user or pet")
+     
    
     }
 

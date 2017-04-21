@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController {
-    var userToDisplay : String = "blank"
-    var userTypeToDisplay: String = "pets"
+
     
     @IBOutlet weak var interestsLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -49,7 +48,7 @@ class ProfileViewController: UIViewController {
         //let prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
         //REPLACE ABOVE LINE
         var ref = FIRDatabase.database().reference()
-        ref.child(oppositeType).child(userToDisplay).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+        ref.child(userType).child(curUser).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
             // Get user value
           
              let dictionary = snapshot.value as? NSDictionary
@@ -58,8 +57,8 @@ class ProfileViewController: UIViewController {
                 self.timesLabel.text = dictionary?["times"] as? String ?? ""
                 self.nameLabel.text = dictionary?["name"] as? String ?? ""
                 // image.image = prof.profileImage
-                self.locationLabel.text = dictionary?["contact"] as? String ?? ""
-                self.contactLabel.text = dictionary?["contact"] as? String ?? ""
+                self.locationLabel.text = dictionary?["location"] as? String ?? ""
+                self.contactLabel.text = dictionary?["phone"] as? String ?? ""
             
         })
 
