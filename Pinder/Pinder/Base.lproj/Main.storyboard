@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -454,11 +454,16 @@
                                     <action selector="pictureButton:" destination="VfK-Nl-1Ix" eventType="touchUpInside" id="wid-1U-G13"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ha-hr-LgQ">
+                                <rect key="frame" x="169" y="91" width="190" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="ageField" destination="MMQ-wV-QWD" id="uiC-f0-7XK"/>
+                        <outlet property="editImageView" destination="7ha-hr-LgQ" id="F1W-pW-t1D"/>
                         <outlet property="emailField" destination="ihC-Ag-wAR" id="OEq-5l-eUb"/>
                         <outlet property="interestsField" destination="hAX-aF-VLd" id="L2l-GO-LPB"/>
                         <outlet property="locationField" destination="XV3-l9-I4E" id="65S-1E-uCw"/>
@@ -639,7 +644,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q59-Vn-zcW" id="MLh-wg-gK2" customClass="MatchTableViewCell" customModule="Pinder" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue-square" translatesAutoresizingMaskIntoConstraints="NO" id="C23-tL-nNp">
@@ -702,8 +707,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cLi-gp-i4m"/>
-        <segue reference="VPE-wx-bUh"/>
-        <segue reference="4nK-kF-MhM"/>
+        <segue reference="e7M-Zw-hxo"/>
         <segue reference="eAx-77-1wo"/>
+        <segue reference="gRE-Rx-20l"/>
     </inferredMetricsTieBreakers>
 </document>

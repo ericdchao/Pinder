@@ -22,22 +22,34 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var timesField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     
+    @IBOutlet weak var editImageView: UIImageView!
     //picking pictures
+    
+    var imagePicker = UIImagePickerController()
+    
     @IBAction func pictureButton(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-            let imagePicker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            print("Button capture")
+            
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
-            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .savedPhotosAlbum;
+            imagePicker.allowsEditing = false
+            
             self.present(imagePicker, animated: true, completion: nil)
         }
         
     }
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        //save picked picture to database
-        //save image storageRef.upload(image)
+  
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            // image
+            editImageView.image = image
+        } else{
+            print("Something went wrong")
+        }
         
-        self.dismiss(animated: true, completion: nil);
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButton(_ sender: Any) {

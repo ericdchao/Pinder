@@ -161,7 +161,6 @@ class BrowseViewController: UIViewController {
                     usersArray.remove(at: 0)
                 }
             } else if label.center.x > self.view.bounds.width - 100 {
-                matchAlert.show()
                 print("Chosen")
                 updataImage()
                 
