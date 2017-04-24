@@ -68,7 +68,7 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
         locationLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         timesLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         contactLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
-        nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
+        nameLabel.font = UIFont(name: "Quicksand-Bold", size: 35)
     }
     
     override func viewDidLoad() {

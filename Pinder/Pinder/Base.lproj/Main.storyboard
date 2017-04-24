@@ -36,7 +36,7 @@
                                 <rect key="frame" x="71" y="420" width="236" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7S-hE-hSw">
@@ -454,11 +454,16 @@
                                     <action selector="pictureButton:" destination="VfK-Nl-1Ix" eventType="touchUpInside" id="wid-1U-G13"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue-square" translatesAutoresizingMaskIntoConstraints="NO" id="Pa5-Ld-AjX">
+                                <rect key="frame" x="16" y="82" width="343" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="ageField" destination="MMQ-wV-QWD" id="uiC-f0-7XK"/>
+                        <outlet property="editImageView" destination="Pa5-Ld-AjX" id="RDl-f1-hc2"/>
                         <outlet property="emailField" destination="ihC-Ag-wAR" id="OEq-5l-eUb"/>
                         <outlet property="interestsField" destination="hAX-aF-VLd" id="L2l-GO-LPB"/>
                         <outlet property="locationField" destination="XV3-l9-I4E" id="65S-1E-uCw"/>
@@ -635,7 +640,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="match cell" rowHeight="106" id="Q59-Vn-zcW" customClass="MatchTableViewCell" customModule="Pinder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="matchcell" rowHeight="106" id="Q59-Vn-zcW" customClass="MatchTableViewCell" customModule="Pinder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q59-Vn-zcW" id="MLh-wg-gK2" customClass="MatchTableViewCell" customModule="Pinder" customModuleProvider="target">
@@ -702,8 +707,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cLi-gp-i4m"/>
-        <segue reference="VPE-wx-bUh"/>
-        <segue reference="4nK-kF-MhM"/>
+        <segue reference="e7M-Zw-hxo"/>
         <segue reference="eAx-77-1wo"/>
+        <segue reference="gRE-Rx-20l"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -80,7 +80,7 @@ class BrowseViewController: UIViewController {
         matchAlert.add(action: nevermindAction)
         matchAlert.add(action: doneAction)
         
-        nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 30)
+        nameLabel.font = UIFont(name: "Quicksand-Bold", size: 30)
         
         var oppositeType = "pets"
         if userType == "pets" {
