@@ -578,6 +578,7 @@
                         <outlet property="petImage" destination="yDB-Ye-kOl" id="F6e-gd-KCw"/>
                         <segue destination="yjx-Vf-tGW" kind="presentation" identifier="toMatches" id="cLi-gp-i4m"/>
                         <segue destination="EQv-3e-5Ut" kind="presentation" identifier="toSettings" id="4nK-kF-MhM"/>
+                        <segue destination="tO0-uF-eQs" kind="show" identifier="browseToDetail" id="xqw-8V-BPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arO-lY-hTb" userLabel="First Responder" sceneMemberID="firstResponder"/>

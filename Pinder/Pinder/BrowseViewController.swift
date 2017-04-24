@@ -61,12 +61,9 @@ class BrowseViewController: UIViewController {
         // self.petImage.image = UIImage(nextImage)
     }
     
-    func someHandler(alert: CDAlertViewAction!) {
-        // Do something...
-        print("Handle!")
-    }
+
     
-    
+    var userToGoTo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,8 +136,8 @@ class BrowseViewController: UIViewController {
     
     func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
         
-        let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .notification)
-        let doneAction = CDAlertViewAction(title: " Contact her💪")
+        let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .success)
+        let doneAction = CDAlertViewAction(title: " Contact her💪", handler: { doneAction in self.performSegue(withIdentifier: "browseToDetail", sender: nil)})
         let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
         matchAlert.add(action: nevermindAction)
         matchAlert.add(action: doneAction)
@@ -188,13 +185,13 @@ class BrowseViewController: UIViewController {
                             print("=======match!=======")
                             self.ref.child("matches").child(oppositeType).child(self.usersArray[0]).child(curUser).setValue(2)
                             self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(2) //set own value
+                            self.userToGoTo = self.usersArray[0]
                             matchAlert.show()
                         } else {
                             print("=======not match!=======")
                             self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(1)
                         }
                     }
-                    matchAlert.show()
                     self.usersArray.remove(at: 0)
                     self.updateImage()
 
@@ -217,6 +214,13 @@ class BrowseViewController: UIViewController {
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "browseToDetail" {
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.userToDisplay = userToGoTo
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
