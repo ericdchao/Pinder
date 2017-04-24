@@ -22,7 +22,7 @@ class MatchTableViewCell: UITableViewCell {
 class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var table: UITableView!
-    
+    var userToGoTo : String?
     var matches: [String] = []
     var matchesProfile : Dictionary<String,Profile> = [:]
     
@@ -51,6 +51,9 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         //need to fix based on how this data will be fetched
         print("making cells 2.......")
         let temp = matches[indexPath.row]
+        cell.matchName!.font = UIFont(name: "Quicksand-Regular", size: 12)
+        cell.matchLocation.font = UIFont(name: "Quicksand-Regular", size: 12)
+        
         cell.matchName!.text = matchesProfile[temp]?.name
         cell.matchImage?.image = #imageLiteral(resourceName: "profile")
         cell.matchLocation.text = matchesProfile[temp]?.location
@@ -70,7 +73,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         //send the current match/info
         
         //Set user and use retrieveUserProfile
-        
+        userToGoTo = matches[indexPath.row]
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
@@ -147,5 +150,15 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.userToDisplay = userToGoTo ?? ""
+            }
+        }
+    }
+    
+    
     
 }

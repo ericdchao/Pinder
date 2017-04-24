@@ -17,6 +17,7 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timesLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
+    var userToDisplay : String = ""
     
     @IBAction func contactButton(_ sender: Any) {
         sendMessage()
@@ -72,6 +73,25 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
     }
     
     override func viewDidLoad() {
+        var oppositeType = "pets"
+        if userType == "pets" {
+            oppositeType = "users"
+        }
+        
+        var ref = FIRDatabase.database().reference()
+        ref.child(oppositeType).child(userToDisplay).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+            // Get user value
+            
+            let dictionary = snapshot.value as? NSDictionary
+            self.interestsLabel.text = dictionary?["interests"] as? String ?? ""
+            self.timesLabel.text = dictionary?["times"] as? String ?? ""
+            self.nameLabel.text = dictionary?["name"] as? String ?? ""
+            // image.image = prof.profileImage
+            self.locationLabel.text = dictionary?["location"] as? String ?? ""
+            self.contactLabel.text = dictionary?["phone"] as? String ?? ""
+            
+        })
+
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         

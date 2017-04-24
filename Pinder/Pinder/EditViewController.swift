@@ -144,7 +144,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         
         view.addGestureRecognizer(tap)
-        print("ohhh")
+    
         ref.child(userType).child(curUser).child("profileImage").observeSingleEvent(of: .value, with: { (snapshot) in
             print("1231231231")
             // check if user has photo
@@ -166,7 +166,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         })
         
-        print("ahhh")
+     
         
     }
     

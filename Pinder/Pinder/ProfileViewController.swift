@@ -45,8 +45,7 @@ class ProfileViewController: UIViewController {
         if userType == "pets" {
             oppositeType = "users"
         }
-        //let prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
-        //REPLACE ABOVE LINE
+    
         var ref = FIRDatabase.database().reference()
         ref.child(userType).child(curUser).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
             // Get user value
