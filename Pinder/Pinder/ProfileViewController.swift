@@ -62,7 +62,24 @@ class ProfileViewController: UIViewController {
         })
 
         
-       
+        ref.child(userType).child(curUser).child("profileImage").observeSingleEvent(of: .value, with: { (snapshot) in
+            // check if user has photo
+            if let imageURL2  = snapshot.value {
+                // set image location
+                let imageURL = imageURL2 as? String
+                if imageURL != nil {
+                    let imageLoadedURL = URL(string: imageURL as! String)
+                    let data = try? Data(contentsOf: (imageLoadedURL)!)
+                    let image = UIImage(data: data!)
+                    self.image.image = image
+                } else {
+                    print("there are an empty profile image")
+                }
+            } else {
+                print("NOTHING HERE Url =wise)")
+            }
+        })
+        
         super.viewDidLoad()
         loadData()
         

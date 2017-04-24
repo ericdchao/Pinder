@@ -25,6 +25,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     var userToGoTo : String?
     var matches: [String] = []
     var matchesProfile : Dictionary<String,Profile> = [:]
+    var profileImages : Dictionary<String, UIImage> = [:]
     
 
     
@@ -51,11 +52,11 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         //need to fix based on how this data will be fetched
         print("making cells 2.......")
         let temp = matches[indexPath.row]
-        cell.matchName!.font = UIFont(name: "Quicksand-Regular", size: 12)
-        cell.matchLocation.font = UIFont(name: "Quicksand-Regular", size: 12)
+        cell.matchName!.font = UIFont(name: "Quicksand-Bold", size: 30)
+        cell.matchLocation.font = UIFont(name: "Quicksand-Italic", size: 20)
         
         cell.matchName!.text = matchesProfile[temp]?.name
-        cell.matchImage?.image = #imageLiteral(resourceName: "profile")
+        cell.matchImage?.image = profileImages[temp]
         cell.matchLocation.text = matchesProfile[temp]?.location
         
         return cell
@@ -126,12 +127,42 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                         print(dictionary ?? "")
                         print(3.5)
                         let dictionary2 = dictionary as! Dictionary<String,String>
-                        
                         let newProfile = Profile(dictionary: dictionary2)
                         print(newProfile)
-                        self.matchesProfile[match] = newProfile;                         print("about to reload")
+                        self.matchesProfile[match] = newProfile;
+                        
+                    
+                        
+                        print("about to reload")
                         self.table.reloadData()
                     })
+                    
+                    
+                    
+                    ref.child(oppositeType).child(match).child("profileImage").observeSingleEvent(of: .value, with: { (snapshot) in
+                        // check if user has photo
+                        if let imageURL2  = snapshot.value {
+                            // set image location
+                            let imageURL = imageURL2 as? String
+                            if imageURL != nil {
+                                let imageLoadedURL = URL(string: imageURL as! String)
+                                let data = try? Data(contentsOf: (imageLoadedURL)!)
+                                let image = UIImage(data: data!)
+                                self.profileImages[match] = image
+                                
+                            } else {
+                                print("there are an empty profile image")
+                            }
+                        } else {
+                            print("NOTHING HERE Url =wise)")
+                        }
+                        
+                         self.table.reloadData()
+                    })
+                    
+                    
+                    
+                    
                     
                     //self.table.reloadData()
                 }

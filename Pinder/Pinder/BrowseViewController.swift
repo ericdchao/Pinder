@@ -43,10 +43,15 @@ class BrowseViewController: UIViewController {
         print("======= update image =======")
         if usersArray.isEmpty {
             //Print error message no more users
-            nameLabel.text = "Looking for more users ..."
+            nameLabel.text = "No more :("
         } else {
             let topUser = usersArray[0]
-            nameLabel.text = topUser
+            if let ageTemp = swipesArray[topUser]?.age {
+                nameLabel.text = "\(topUser), \(ageTemp)"
+            } else {
+                nameLabel.text = "\(topUser)"
+            }
+            
 //            petImage.image = swipesArray[topUser]?.profileImage
             
             
