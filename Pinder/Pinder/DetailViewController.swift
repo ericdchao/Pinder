@@ -17,6 +17,7 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timesLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
+    var userToDisplay : String = ""
     
     @IBAction func contactButton(_ sender: Any) {
         sendMessage()
