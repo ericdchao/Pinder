@@ -18,8 +18,8 @@ import Firebase
 func saveNewUser(username: String, password: String) {
     let ref = FIRDatabase.database().reference()
     let newUserRef = ref.child("users")
-    newUserRef.child(username.lowercased())
-    let newChildUserRef = newUserRef.child(username.lowercased())
+    newUserRef.child(username)
+    let newChildUserRef = newUserRef.child(username)
     newChildUserRef.setValue(["username" : username,
                               "password": password])
 }
@@ -207,13 +207,13 @@ func getMatches(username: String, userType: String) ->  [String] {
 //Function to change the username of a user or a pet
 func changeUserName(oldUsername: String, newUsername: String, userType: String){
     let ref = FIRDatabase.database().reference()
-    ref.child(userType).child(oldUsername).setValue(newUsername.lowercased())
+    ref.child(userType).child(oldUsername).setValue(newUsername)
 }
 
 //Function to change password
 func changePassword(username: String, oldPassword: String, newPassword: String, userType: String){
     let ref = FIRDatabase.database().reference()
-    ref.child(userType).child(username).child(oldPassword).setValue(newPassword)
+    ref.child(userType).child(username).child("password").setValue(newPassword)
 }
 
 
