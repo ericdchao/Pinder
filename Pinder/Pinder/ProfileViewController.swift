@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         locationLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         timesLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
         contactLabel.font = UIFont(name: "Quicksand-Regular", size: 16)
-        nameLabel.font = UIFont(name: "QuicksandDash-Regular", size: 35)
+        nameLabel.font = UIFont(name: "Quicksand-Bold", size: 35)
     }
     
     override func viewDidLoad() {
@@ -45,8 +45,7 @@ class ProfileViewController: UIViewController {
         if userType == "pets" {
             oppositeType = "users"
         }
-        //let prof = retrieveUserProfile(username: userToDisplay, userType: oppositeType)
-        //REPLACE ABOVE LINE
+    
         var ref = FIRDatabase.database().reference()
         ref.child(userType).child(curUser).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
             // Get user value

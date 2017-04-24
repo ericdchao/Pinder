@@ -25,13 +25,13 @@ class Profile {
     
     init (dictionary : Dictionary<String, userProfileElement>) {
         if let name2 = dictionary["name"] {
-            name = name2 as! String
+            name = name2 as? String
         } else {
             name = ""
         }
         
         if let interests3 = dictionary["interests"] {
-             interests = interests3 as! String
+             interests = interests3 as? String
         } else {
             interests = ""
         }

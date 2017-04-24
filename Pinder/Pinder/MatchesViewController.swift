@@ -22,7 +22,7 @@ class MatchTableViewCell: UITableViewCell {
 class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var table: UITableView!
-    
+    var userToGoTo : String?
     var matches: [String] = []
     var matchesProfile : Dictionary<String,Profile> = [:]
     
@@ -38,19 +38,25 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
     private func setupTableView() {
-        table.dataSource = self
-        table.delegate = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "match cell")
+        self.table.dataSource = self
+        self.table.delegate = self
+        self.table.register(UITableViewCell.self, forCellReuseIdentifier: "match cell")
     }
     
     //make each cell propagate with proper image and title
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //change back after testing
-        let cell = table.dequeueReusableCell(withIdentifier: "match cell", for: indexPath) as! MatchTableViewCell
+        print("making cells .......")
+        let cell = table.dequeueReusableCell(withIdentifier: "matchcell", for: indexPath) as! MatchTableViewCell
         //need to fix based on how this data will be fetched
-        cell.matchName!.text = "match name"
+        print("making cells 2.......")
+        let temp = matches[indexPath.row]
+        cell.matchName!.font = UIFont(name: "Quicksand-Regular", size: 12)
+        cell.matchLocation.font = UIFont(name: "Quicksand-Regular", size: 12)
+        
+        cell.matchName!.text = matchesProfile[temp]?.name
         cell.matchImage?.image = #imageLiteral(resourceName: "profile")
-        cell.matchLocation.text = "changed location label"
+        cell.matchLocation.text = matchesProfile[temp]?.location
         
         return cell
     }
@@ -59,7 +65,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //for testing standard value change back for real deal
 //        return matches.count
-        return 5
+        return matchesProfile.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -67,7 +73,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         //send the current match/info
         
         //Set user and use retrieveUserProfile
-        
+        userToGoTo = matches[indexPath.row]
         performSegue(withIdentifier: "toDetail", sender: nil)
     }
     
@@ -80,11 +86,17 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        
         // Do any additional setup after loading the view, typically from a nib.
         //Call getMatches to return usernames, and call retrieveUSerPorilfes on them!
 
         //matches = getMatches(username: curUser, userType: userType)
-        
+      
+        print(matchesProfile)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let ref = FIRDatabase.database().reference()
         ref.child("matches").child(userType).child(curUser).observeSingleEvent(of: .value, with:
             {(snapshot) in
@@ -98,33 +110,55 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                 }
                 
-                // Update table here
-        })
-     
-        
-        
-        for match in matches {
-            var oppositeType = "pets"
-            if userType == "pets" {
-                oppositeType = "users"
-            }
-            
-            ref.child(oppositeType).child(match).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
-                // Get user value
-                let dictionary = snapshot.value as? NSDictionary
-                let newProfile = Profile(dictionary: dictionary as! Dictionary<String, userProfileElement>)
-                  self.matchesProfile[match] = newProfile
-            })
+                
+                print(1)
+                
+                for match in self.matches {
+                    var oppositeType = "pets"
+                    if userType == "pets" {
+                        oppositeType = "users"
+                    }
+                    print(2)
+                    ref.child(oppositeType).child(match).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
+                       
+                        print(3)// Get user value
+                        let dictionary = snapshot.value
+                        print(dictionary ?? "")
+                        print(3.5)
+                        let dictionary2 = dictionary as! Dictionary<String,String>
+                        
+                        let newProfile = Profile(dictionary: dictionary2)
+                        print(newProfile)
+                        self.matchesProfile[match] = newProfile;                         print("about to reload")
+                        self.table.reloadData()
+                    })
+                    
+                    //self.table.reloadData()
+                }
 
-            
-          
-        }
-        print(matchesProfile)
+                
+                
+             self.table.reloadData()   // Update table here
+        })
+        
+        
+        
+          //self.table.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.userToDisplay = userToGoTo ?? ""
+            }
+        }
+    }
+    
+    
     
 }

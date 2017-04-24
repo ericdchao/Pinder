@@ -23,6 +23,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var phoneField: UITextField!
     
     @IBOutlet weak var editImageView: UIImageView!
+
+    let storageRef = FIRStorage.storage().reference()
     //picking pictures
     
     var imagePicker = UIImagePickerController()
@@ -40,10 +42,11 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
     }
-  
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             // image
+            print("change!")
             editImageView.image = image
         } else{
             print("Something went wrong")
@@ -70,10 +73,40 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             changePassword(username: curUser,oldPassword: curPass, newPassword: passwordField.text!, userType: userType)
         }
         print("pass changed successfully")
-       // if nameField.text != "" { dont do this, it doesn't work
+        // if nameField.text != "" { dont do this, it doesn't work
         //    changeUserName(oldUsername: curUser, newUsername: nameField.text!, userType: userType)
         //}
         print("name changed")
+        
+        
+        //Save Image
+        var data = NSData()
+        data = UIImageJPEGRepresentation(editImageView.image!, 1.0)! as NSData
+        let imageRef = storageRef.child("images").child(curUser)
+        
+        let metaData = FIRStorageMetadata()
+       
+        metaData.contentType = "image/jpg"
+        imageRef.put(data as Data, metadata: metaData){(metaData,error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }else{
+                //store downloadURL
+                let downloadURL = metaData!.downloadURL()!.absoluteString
+                //store downloadURL at database
+                let ref = FIRDatabase.database().reference()
+                ref.child(userType).child(curUser).child("profileImage").setValue(downloadURL)
+                //self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
         performSegue(withIdentifier: "editToSettings", sender: nil)
     }
     
@@ -86,20 +119,20 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let ref = FIRDatabase.database().reference()
         ref.child(userType).child(curUser).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
             let dictionary = snapshot.value as? NSDictionary
-                print("start")
-                self.nameField.text = dictionary?["name"] as? String 
-                self.passwordField.text =  dictionary?["password"] as? String ?? ""
-                self.interestsField.text =  dictionary?["interests"] as? String ?? ""
-                self.ageField.text =  dictionary?["age"] as? String ?? ""
-                self.timesField.text =  dictionary?["times"] as? String ?? ""
-                self.phoneField.text =  dictionary?["phone"] as? String ?? ""
-                self.locationField.text =  dictionary?["location"] as? String ?? ""
+            print("start")
+            self.nameField.text = dictionary?["name"] as? String
+            self.passwordField.text =  dictionary?["password"] as? String ?? ""
+            self.interestsField.text =  dictionary?["interests"] as? String ?? ""
+            self.ageField.text =  dictionary?["age"] as? String ?? ""
+            self.timesField.text =  dictionary?["times"] as? String ?? ""
+            self.phoneField.text =  dictionary?["phone"] as? String ?? ""
+            self.locationField.text =  dictionary?["location"] as? String ?? ""
             
         })
         
-
         
-       print("done")
+        
+        print("done")
         //imageField.image = prof.image
         
         super.viewDidLoad()
@@ -109,7 +142,32 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         //tap.cancelsTouchesInView = false
         
+        
         view.addGestureRecognizer(tap)
+    
+        ref.child(userType).child(curUser).child("profileImage").observeSingleEvent(of: .value, with: { (snapshot) in
+            print("1231231231")
+            // check if user has photo
+            if let imageURL2  = snapshot.value {
+                // set image location
+                let imageURL = imageURL2 as? String
+                if imageURL != nil {
+                print("YOU GOTTA CHILD WOOHO")
+                print(imageURL)
+                let imageLoadedURL = URL(string: imageURL as! String)
+                let data = try? Data(contentsOf: (imageLoadedURL)!)
+                let image = UIImage(data: data!)
+                self.editImageView.image = image
+                } else {
+                    print("there are an empty profile image")
+                }
+            } else {
+                print("NOTHING HERE Url =wise)")
+            }
+        })
+        
+     
+        
     }
     
     func dismissKeyboard() {
@@ -121,5 +179,9 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+   
+    
     
 }
