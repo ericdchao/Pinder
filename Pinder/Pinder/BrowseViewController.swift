@@ -132,7 +132,7 @@ class BrowseViewController: UIViewController {
     func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
         
         let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .success)
-        let doneAction = CDAlertViewAction(title: " Contact her💪", handler: { doneAction in self.performSegue(withIdentifier: "toDetail", sender: nil)})
+        let doneAction = CDAlertViewAction(title: " Contact her💪", handler: { doneAction in self.performSegue(withIdentifier: "browseToDetail", sender: nil)})
         let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
         matchAlert.add(action: nevermindAction)
         matchAlert.add(action: doneAction)
@@ -210,7 +210,7 @@ class BrowseViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetail" {
+        if segue.identifier == "browseToDetail" {
             if let detailViewController = segue.destination as? DetailViewController {
                 detailViewController.userToDisplay = userToGoTo
             }

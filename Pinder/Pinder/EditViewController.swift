@@ -153,8 +153,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 let imageURL = imageURL2 as? String
                 if imageURL != nil {
                 print("YOU GOTTA CHILD WOOHO")
-                print(imageURL)
-                let imageLoadedURL = URL(string: imageURL as! String)
+                let imageLoadedURL = URL(string: imageURL!)
                 let data = try? Data(contentsOf: (imageLoadedURL)!)
                 let image = UIImage(data: data!)
                 self.editImageView.image = image
