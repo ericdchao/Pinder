@@ -162,9 +162,6 @@ class BrowseViewController: UIViewController {
              print(swipesArray)
          
             if label.center.x < 100 {
-                matchAlert.show()
-
-                
                 print("Not chosen")
                 if usersArray.count > 0 { // What is this check?
                     usersArray.remove(at: 0)
@@ -192,6 +189,7 @@ class BrowseViewController: UIViewController {
                             self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(1)
                         }
                     }
+                    matchAlert.show()
                     self.usersArray.remove(at: 0)
                     self.updateImage()
 
