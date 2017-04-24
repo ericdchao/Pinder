@@ -26,8 +26,10 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
         print("location clicked")
         let location = locationLabel.text!.replacingOccurrences(of: " ", with: ",", options: .literal, range: nil)
         if let url = URL(string: "http://maps.apple.com/?address=\(location)") {
-            print("location worked")
-            UIApplication.shared.open(url, options: [UIApplicationOpenURLOptionUniversalLinksOnly : true], completionHandler: nil)
+            print("url tried: http://maps.apple.com/?address=\(location)")
+            print("Can open? \(UIApplication.shared.canOpenURL(url))")
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            
         } else {
             return
         }

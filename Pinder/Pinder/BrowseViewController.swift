@@ -19,21 +19,15 @@ class BrowseViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var petImage: UIImageView?
     
+    
+    //note directions are reversed bc Kate doesn't know how real tinder works
     @IBAction func noButton(_ sender: Any) {
-        //animate and update db when not interested
-        if usersArray.count > 0 { // What is this check?
-            usersArray.remove(at: 0)
-            
-        }
-        updateImage()
-    }
-    @IBAction func yesButton(_ sender: Any) {
         let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .success)
-        let doneAction = CDAlertViewAction(title: " Contact her💪", handler: { doneAction in self.performSegue(withIdentifier: "browseToDetail", sender: nil)})
+        let doneAction = CDAlertViewAction(title: " Contact them 💪", handler: { doneAction in self.performSegue(withIdentifier: "browseToDetail", sender: nil)})
         let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
         matchAlert.add(action: nevermindAction)
         matchAlert.add(action: doneAction)
-
+        
         //animate and update db when interested
         if(usersArray.count != 0){
             
@@ -68,7 +62,14 @@ class BrowseViewController: UIViewController {
             
         }
         
-        
+    }
+    @IBAction func yesButton(_ sender: Any) {
+        //animate and update db when not interested
+        if usersArray.count > 0 { // What is this check?
+            usersArray.remove(at: 0)
+            
+        }
+        updateImage()
     }
     
     
