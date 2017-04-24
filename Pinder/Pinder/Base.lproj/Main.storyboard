@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -491,9 +492,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-ze-Dga">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-ze-Dga">
                                 <rect key="frame" x="16" y="20" width="343" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Personal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMX-qw-Uxc">
                                         <rect key="frame" x="8" y="11" width="66" height="21"/>
@@ -519,9 +519,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="browsing" translatesAutoresizingMaskIntoConstraints="NO" id="DNk-et-ntN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="browsing" translatesAutoresizingMaskIntoConstraints="NO" id="DNk-et-ntN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C31-74-bBf">
                                 <rect key="frame" x="46" y="557" width="78" height="62"/>
@@ -560,18 +559,31 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQI-gx-EOZ">
-                                <rect key="frame" x="67" y="435" width="271" height="73"/>
+                                <rect key="frame" x="58" y="435" width="272" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twtr-share.png" translatesAutoresizingMaskIntoConstraints="NO" id="yDB-Ye-kOl">
-                                <rect key="frame" x="67" y="183" width="240" height="244"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twtr-share.png" translatesAutoresizingMaskIntoConstraints="NO" id="yDB-Ye-kOl">
+                                <rect key="frame" x="67" y="183" width="240" height="236"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="236" id="Jha-jM-yIW"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8EX-ze-Dga" firstAttribute="leading" secondItem="bf7-3N-EXX" secondAttribute="leadingMargin" id="0h8-km-Qzc"/>
+                            <constraint firstItem="DNk-et-ntN" firstAttribute="top" secondItem="yDB-Ye-kOl" secondAttribute="bottom" constant="-419" id="8nG-7L-jrm"/>
+                            <constraint firstItem="8EX-ze-Dga" firstAttribute="top" secondItem="lDA-rO-Z4v" secondAttribute="bottom" id="9o7-iO-oLF"/>
+                            <constraint firstItem="yDB-Ye-kOl" firstAttribute="centerX" secondItem="bf7-3N-EXX" secondAttribute="centerX" id="HyB-h9-l81"/>
+                            <constraint firstItem="yDB-Ye-kOl" firstAttribute="leading" secondItem="bf7-3N-EXX" secondAttribute="leadingMargin" constant="51" id="Q4t-K4-Rdt"/>
+                            <constraint firstItem="yDB-Ye-kOl" firstAttribute="top" secondItem="bf7-3N-EXX" secondAttribute="top" constant="183" id="Qlt-sF-Alt"/>
+                            <constraint firstItem="yDB-Ye-kOl" firstAttribute="centerX" secondItem="8EX-ze-Dga" secondAttribute="centerX" id="dpb-eq-HJ1"/>
+                            <constraint firstItem="yDB-Ye-kOl" firstAttribute="centerX" secondItem="DNk-et-ntN" secondAttribute="centerX" id="m9s-aD-D03"/>
+                            <constraint firstAttribute="bottom" secondItem="8EX-ze-Dga" secondAttribute="bottom" constant="605" id="y4G-F1-dRa"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="nameLabel" destination="jQI-gx-EOZ" id="UDX-6S-LzK"/>
@@ -708,10 +720,10 @@
         <image name="twtr-share.png" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OcG-MC-7z7"/>
-        <segue reference="jgo-I0-u3I"/>
-        <segue reference="0CW-Sk-Fnb"/>
+        <segue reference="cLi-gp-i4m"/>
         <segue reference="w4E-CX-gLH"/>
         <segue reference="Nr8-4J-LyG"/>
+        <segue reference="4nK-kF-MhM"/>
+        <segue reference="xqw-8V-BPI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -101,11 +101,16 @@ class Register1VC: ViewController {
     @IBAction func humanReg(_ sender: Any) {
         saveNewPet(username: curUser, password: curPass)
         userType = "pets"
+        var ref = FIRDatabase.database().reference()
+        ref.child("matches").child(userType).child(curUser).child("test").setValue(0)
         performSegue(withIdentifier: "regToEdit", sender: "human")
     }
     @IBAction func petReg(_ sender: Any) {
         saveNewUser(username: curUser, password: curPass)
         userType = "users"
+        
+        var ref = FIRDatabase.database().reference()
+        ref.child("matches").child(userType).child(curUser).child("test").setValue(0)
         performSegue(withIdentifier: "regToEdit", sender: "pet")
     }
     

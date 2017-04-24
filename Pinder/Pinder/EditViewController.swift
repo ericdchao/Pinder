@@ -106,8 +106,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         
         
-        
-        performSegue(withIdentifier: "editToSettings", sender: nil)
+        performSegue(withIdentifier: "editToMatch", sender: nil)
+        //performSegue(withIdentifier: "editToSettings", sender: nil)
     }
     
     @IBAction func backButton(_ sender: Any) {

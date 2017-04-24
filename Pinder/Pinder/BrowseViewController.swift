@@ -16,14 +16,59 @@ class BrowseViewController: UIViewController {
     var swipesArray : Dictionary<String, Profile> = [:]
     var profileImages : Dictionary<String, UIImage> = [:]
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var petImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var petImage: UIImageView?
     
     @IBAction func noButton(_ sender: Any) {
         //animate and update db when not interested
+        if usersArray.count > 0 { // What is this check?
+            usersArray.remove(at: 0)
+            
+        }
+        updateImage()
     }
     @IBAction func yesButton(_ sender: Any) {
+        let matchAlert = CDAlertView(title: "It's a Match !", message: "", type: .success)
+        let doneAction = CDAlertViewAction(title: " Contact her💪", handler: { doneAction in self.performSegue(withIdentifier: "browseToDetail", sender: nil)})
+        let nevermindAction = CDAlertViewAction(title: "Keep Swiping 😑")
+        matchAlert.add(action: nevermindAction)
+        matchAlert.add(action: doneAction)
+
         //animate and update db when interested
+        if(usersArray.count != 0){
+            
+            
+            
+            var oppositeType = "pets"
+            if userType == "pets" {
+                oppositeType = "users"
+            }
+            
+            //Check if other user matched
+            ref.child("matches").child(oppositeType).child(usersArray[0]).observeSingleEvent(of: .value, with: {(snapshot) in
+                let enumerator = snapshot.children
+                print(self.usersArray[0])
+                self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(1)
+                while let matches = enumerator.nextObject() as? FIRDataSnapshot{
+                    if matches.key == curUser { //It's a match!
+                        print("=======match!=======")
+                        self.ref.child("matches").child(oppositeType).child(self.usersArray[0]).child(curUser).setValue(2)
+                        self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(2) //set own value
+                        self.userToGoTo = self.usersArray[0]
+                        matchAlert.show()
+                    }
+                }
+                if self.usersArray.count > 0 {
+                    self.usersArray.remove(at: 0)
+                }
+                self.updateImage()
+                
+                
+            })
+            
+        }
+        
+        
     }
     
     
@@ -42,24 +87,27 @@ class BrowseViewController: UIViewController {
     func updateImage(){
         // first get the user images 
         print("======= update image =======")
-        if usersArray.isEmpty {
+        if usersArray.isEmpty || usersArray.count == 0 {
             //Print error message no more users
-            nameLabel.text = "No more :("
+            nameLabel?.text = "No more :("
+            self.petImage?.removeFromSuperview()
         } else {
             let topUser = usersArray[0]
+            let namee = swipesArray[topUser]?.name ?? "Name Error"
             if let ageTemp = swipesArray[topUser]?.age {
-                nameLabel.text = "\(topUser), \(ageTemp)"
+                nameLabel?.text = "\(namee), \(ageTemp)"
             } else {
-                nameLabel.text = "\(topUser)"
+                nameLabel?.text = "\(namee)"
             }
             
 //            petImage.image = swipesArray[topUser]?.profileImage
             
             
+            self.petImage?.image = self.profileImages[usersArray[0]]
+            print("Upload successfull")
         }
         
         
-         self.petImage.image = self.profileImages[usersArray[0]]
     }
     
 
@@ -72,18 +120,17 @@ class BrowseViewController: UIViewController {
         print("=======Dylan's choice=======")
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
         
-        petImage.isUserInteractionEnabled = true
+        petImage?.isUserInteractionEnabled = true
         
-        petImage.addGestureRecognizer(gesture)
+        petImage?.addGestureRecognizer(gesture)
         
-        nameLabel.font = UIFont(name: "Quicksand-Bold", size: 30)
+        nameLabel?.font = UIFont(name: "Quicksand-Bold", size: 30)
         
         var oppositeType = "pets"
         if userType == "pets" {
             oppositeType = "users"
         }
         
-        usersArray = getSwipes(username: curUser, userType: userType)
         
         ref.child(oppositeType).observeSingleEvent(of: .value, with: {
             (snapshot) in
@@ -97,12 +144,20 @@ class BrowseViewController: UIViewController {
             print("2 ======= done appending=======")
         })
 
+        print(userType)
+        print(curUser)
+        print("300030300333")
         ref.child("matches").child(userType).child(curUser).observeSingleEvent(of: .value, with: { (snapshot) in
+            print("error444444")
             let enumerator = snapshot.children
             print("3 =======removing=======")
             while let user = enumerator.nextObject() as? FIRDataSnapshot{
                 print(user.key)
-                self.usersArray.remove(at: self.usersArray.index(of: user.key )!) //very inefficient way to remove already matched things
+                if(user.key != "test"){
+                    print("RIGHT BEFORE")
+                self.usersArray.remove(at: self.usersArray.index(of: user.key )!)
+                }
+                //very inefficient way to remove already matched things
             }
             
         print("4 =======done removing=======")
@@ -112,6 +167,7 @@ class BrowseViewController: UIViewController {
             for user in self.usersArray {
                 self.ref.child(oppositeType).child(user).child("profile").observeSingleEvent(of: .value, with: {(snapshot) in
                     // Get user value
+                    print("testttt")
                     let dictionary = snapshot.value
                     
                     let newProfile = Profile(dictionary: dictionary as! Dictionary<String, String>)
@@ -139,13 +195,24 @@ class BrowseViewController: UIViewController {
                     } else {
                         print("NOTHING HERE Url =wise)")
                     }
+                    
+                    
+                      self.updateImage()
                 })
+                
+                
+                
+                
             }
 // loop end
-            self.updateImage()
+           
+            print("eric's check")
         })
-
-
+        print("Kate's Check")
+        if(self.usersArray.count == 0) {
+            self.nameLabel?.text = "No more :("
+        }
+        
         
         
     }
@@ -187,10 +254,16 @@ class BrowseViewController: UIViewController {
                 print("Not chosen")
                 if usersArray.count > 0 { // What is this check?
                     usersArray.remove(at: 0)
+                    
                 }
                 updateImage()
+                
             } else if label.center.x > self.view.bounds.width - 100 {
                 print("Chosen")
+                if(usersArray.count != 0){
+                    
+                
+                
                 var oppositeType = "pets"
                 if userType == "pets" {
                     oppositeType = "users"
@@ -200,6 +273,7 @@ class BrowseViewController: UIViewController {
                 ref.child("matches").child(oppositeType).child(usersArray[0]).observeSingleEvent(of: .value, with: {(snapshot) in
                     let enumerator = snapshot.children
                        print(self.usersArray[0])
+                     self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(1)
                     while let matches = enumerator.nextObject() as? FIRDataSnapshot{
                         if matches.key == curUser { //It's a match!
                             print("=======match!=======")
@@ -207,17 +281,17 @@ class BrowseViewController: UIViewController {
                             self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(2) //set own value
                             self.userToGoTo = self.usersArray[0]
                             matchAlert.show()
-                        } else {
-                            print("=======not match!=======")
-                            self.ref.child("matches").child(userType).child(curUser).child(self.usersArray[0]).setValue(1)
-                        }
+                        } 
                     }
-                    self.usersArray.remove(at: 0)
+                    if self.usersArray.count > 0 {
+                        self.usersArray.remove(at: 0)
+                    }
                     self.updateImage()
+                    
 
                 })
                 
-
+                }
                 
             }
             
