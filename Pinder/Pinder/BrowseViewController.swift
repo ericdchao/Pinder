@@ -14,6 +14,7 @@ class BrowseViewController: UIViewController {
     var ref = FIRDatabase.database().reference()
     var usersArray : [String] = []
     var swipesArray : Dictionary<String, Profile> = [:]
+    var profileImages : Dictionary<String, UIImage> = [:]
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var petImage: UIImageView!
@@ -58,7 +59,7 @@ class BrowseViewController: UIViewController {
         }
         
         
-        // self.petImage.image = UIImage(nextImage)
+         self.petImage.image = self.profileImages[usersArray[0]]
     }
     
 
@@ -120,6 +121,25 @@ class BrowseViewController: UIViewController {
                     print("6 =======get user=======")
                 })
                 
+                self.ref.child(oppositeType).child(user).child("profileImage").observeSingleEvent(of: .value, with: { (snapshot) in
+                    print("1231231231")
+                    // check if user has photo
+                    if let imageURL2  = snapshot.value {
+                        // set image location
+                        let imageURL = imageURL2 as? String
+                        if imageURL != nil {
+                            print("YOU GOTTA CHILD WOOHO")
+                            let imageLoadedURL = URL(string: imageURL!)
+                            let data = try? Data(contentsOf: (imageLoadedURL)!)
+                            let image = UIImage(data: data!)
+                            self.profileImages[user] = image
+                        } else {
+                            print("there are an empty profile image")
+                        }
+                    } else {
+                        print("NOTHING HERE Url =wise)")
+                    }
+                })
             }
 // loop end
             self.updateImage()

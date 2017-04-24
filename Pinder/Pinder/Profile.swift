@@ -55,7 +55,7 @@ class Profile {
         } else {
             times = ""
         }
-        if let age2 = dictionary["times"] {
+        if let age2 = dictionary["age"] {
             age = age2 as! String
         } else {
             age = ""

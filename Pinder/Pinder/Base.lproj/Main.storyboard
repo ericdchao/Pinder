@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTl-18-RgE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTl-18-RgE">
                                 <rect key="frame" x="71" y="355" width="232" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -657,7 +657,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWI-RG-Uq5">
-                                                    <rect key="frame" x="159" y="71" width="168" height="21"/>
+                                                    <rect key="frame" x="159" y="71" width="168" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -708,9 +708,10 @@
         <image name="twtr-share.png" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="OcG-MC-7z7"/>
+        <segue reference="jgo-I0-u3I"/>
         <segue reference="0CW-Sk-Fnb"/>
-        <segue reference="cLi-gp-i4m"/>
-        <segue reference="BEL-XH-dgX"/>
-        <segue reference="eAx-77-1wo"/>
+        <segue reference="w4E-CX-gLH"/>
+        <segue reference="Nr8-4J-LyG"/>
     </inferredMetricsTieBreakers>
 </document>

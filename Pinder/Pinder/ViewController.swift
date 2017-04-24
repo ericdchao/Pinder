@@ -100,7 +100,7 @@ class ViewController: UIViewController {
 class Register1VC: ViewController {
     @IBAction func humanReg(_ sender: Any) {
         saveNewPet(username: curUser, password: curPass)
-        userType = "pets"            
+        userType = "pets"
         performSegue(withIdentifier: "regToEdit", sender: "human")
     }
     @IBAction func petReg(_ sender: Any) {

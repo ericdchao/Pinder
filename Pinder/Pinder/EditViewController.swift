@@ -130,11 +130,11 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
         })
         
-        
+
         
         print("done")
         //imageField.image = prof.image
-        
+    
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditViewController.dismissKeyboard))

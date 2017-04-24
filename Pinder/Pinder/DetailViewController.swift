@@ -23,8 +23,10 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
         sendMessage()
     }
     @IBAction func locationButton(_ sender: Any) {
+        print("location clicked")
         let location = locationLabel.text!.replacingOccurrences(of: " ", with: ",", options: .literal, range: nil)
         if let url = URL(string: "http://maps.apple.com/?address=\(location)") {
+            print("location worked")
             UIApplication.shared.open(url, options: [UIApplicationOpenURLOptionUniversalLinksOnly : true], completionHandler: nil)
         } else {
             return
@@ -111,7 +113,7 @@ class DetailViewController: UIViewController,  MFMessageComposeViewControllerDel
             }
         })
         
-        
+        matchLoaded()
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
